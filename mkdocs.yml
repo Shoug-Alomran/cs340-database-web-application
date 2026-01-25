@@ -12,14 +12,14 @@ theme:
     - content.code.copy
   palette:
     - scheme: default
-      primary: pink
-      accent: light pink
+      primary: light green
+      accent: teal
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: light pink
-      accent: pink
+      primary: teal
+      accent: light green
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
