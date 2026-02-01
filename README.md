@@ -49,8 +49,8 @@ Each phase builds cumulatively on the previous ones.
 
 ## Team Members
 - **Shoug Alomran**  
-- **Yara Faihan**  
-- **Rose Rakan**
+- **Yara Albugami**  
+- **Rose Al Rakan**
 
 Each team member contributes to both the **design** and **implementation** aspects of the project, including database modeling, SQL development, and application features.
 
