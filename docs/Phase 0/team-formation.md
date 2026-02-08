@@ -4,6 +4,7 @@
 - **Shoug Alomran**
 - **Yara Faihan**
 - **Rose Rakan**
+- **Raghad Abdulaziz**
 
 ## Communication
 - **Primary communication channel:** WhatsApp group for quick coordination and updates  

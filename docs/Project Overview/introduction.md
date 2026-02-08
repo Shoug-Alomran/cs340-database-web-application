@@ -22,8 +22,9 @@ A complete system where users can create, view, update, and delete data through 
 - Internal review before submission for correctness, consistency, and completeness
 
 ## Individual Contribution (Phase 1 Plan)
-| Member | Contribution |
-|---|---|
-| Yara Albugami | Phase 1: Users & requirements |
-| Shoug Alomran | Phase 1: Architecture & UI |
-| Rose Al Rakan | Phase 1: Data & team planning |
+| Member               | Contribution|
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Yara Albugami**    | Contributed to identifying target users, defining usage scenarios, and formulating the functional and non-functional system requirements. Assisted in clarifying system scope and user interactions.                 |
+| **Shoug Alomran**    | Led the design of the system architecture, including the layered architectural model, and developed the paper prototype and UI wireframes. Ensured alignment between user interfaces and database-driven operations. |
+| **Rose Al Rakan**    | Contributed to defining data requirements, identifying key data categories, and supporting the overall system planning and documentation structure. Participated in refining system requirements.                    |
+| **Raghad Abdulaziz** | Assisted in defining data requirements, reviewing system functionality, and supporting team coordination and documentation consistency across Phase 1 deliverables.                                                  |
