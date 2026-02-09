@@ -9,17 +9,24 @@
 ## Communication
 - **Primary communication channel:** WhatsApp group for quick coordination and updates  
 - **Secondary tools:** GitHub (version control and documentation), Google Docs (collaborative drafting)  
-- **Meeting schedule:** Weekly coordination meetings, with additional meetings scheduled as needed during major project milestones
+- **Meeting schedule:** Weekly coordination meetings, with additional meetings scheduled as needed during major project milestones  
 
-## Roles (Initial)
-- **Member A – Shoug Alomran:**  
-  System architecture planning, UI flow design, backend–database integration, and overall documentation coordination.
+## Roles (Project Plan Dashboard)
+Detailed responsibilities are maintained in the interactive dashboard:
 
-- **Member B – Yara Faihan:**  
-  Requirements analysis, user scenarios, relational database design support, and SQL query development.
+**Project Plan Dashboard (Roles & Tasks):** [Open the Roles Dashboard](./Project plan.html)
 
-- **Member C – Rose Rakan:**  
-  Data modeling (EER), normalization and schema validation, database constraints, and advanced SQL queries.
+### Role Ownership (High-level)
+- **Rose Rakan — User & Access Control Module**  
+  Authentication, roles/permissions (RBAC), and audit logging ownership.
 
-> Roles are defined to ensure balanced contribution across design, database implementation, and application development.  
-> Responsibilities may be refined as the project scope and technical stack are finalized.
+- **Raghad Abdulaziz — Family & Medical History Module**  
+  Family member structure + health events / medical history ownership.
+
+- **Shoug Alomran — Risk Alerts & Analysis Module**  
+  Risk rule logic, alerts generation, aggregation/analysis ownership.
+
+- **Yara Faihan — Appointments, Clinics & Awareness Module**  
+  Clinic browsing, appointment booking, and awareness content ownership.
+
+> The dashboard contains phase-by-phase tasks per member (Phase 2–5) and is the source of truth.

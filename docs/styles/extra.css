@@ -2,34 +2,29 @@
    GLOBAL COLORS
    ======================================================= */
 :root {
-  --mint-1: #98e2c6;
-  --mint-2: #bbf7d0;
+  /* Primary mint (calm, medical-grade) */
+  --mint-1: #7fcdb8;
+  --mint-2: #e6f4f1;
 
-  /* Softer than harsh black */
-  --ink: #2b3443;
-  --ink-muted: #445063;
+  /* Professional ink tones */
+  --ink: #1f2937;        /* slate-800 */
+  --ink-muted: #4b5563;  /* slate-600 */
 
-  /* Accent */
-  --accent: #0b6b63;
+  /* Accent (trustworthy teal) */
+  --accent: #0f766e;
 
-  /* Pills */
-  --pill: rgba(43, 52, 67, 0.06);
-  --pill-hover: rgba(43, 52, 67, 0.10);
-  --pill-active: rgba(11, 107, 99, 0.14);
+  /* Pills / subtle surfaces */
+  --pill: rgba(31, 41, 55, 0.05);
+  --pill-hover: rgba(31, 41, 55, 0.08);
+  --pill-active: rgba(15, 118, 110, 0.12);
 }
 
 /* =======================================================
-   HEADER + TABS (PALE GREEN GRADIENT) — CLEAN
+   HEADER + TABS (PALE GREEN GRADIENT)
    ======================================================= */
 .md-header,
 .md-tabs {
   background: linear-gradient(90deg, var(--mint-1), var(--mint-2)) !important;
-}
-
-/* Make header text readable (soft ink) */
-.md-header,
-.md-header * {
-  color: var(--ink) !important;
 }
 
 /* Keep inner containers transparent */
@@ -38,32 +33,134 @@
   background: transparent !important;
 }
 
-/* Search field + icons in header */
-.md-search__form,
-.md-search__input,
-.md-search__icon,
-.md-header__option,
-.md-header__button {
-  background-color: transparent !important;
-  color: var(--ink) !important;
+/* =======================================================
+   FIX: HEADER TITLE OVERLAP (Material renders title + topic)
+   ======================================================= */
+/*
+  IMPORTANT:
+  Your site title is inside .md-header__topic in your current Material version.
+  So DO NOT hide .md-header__topic, or the header title disappears.
+*/
+
+/* Make header inner layout resilient */
+.md-header__inner {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
 }
 
-/* Use full width inside tabs */
+/* Ensure title container can shrink and doesn't overlap */
+.md-header__title {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  flex: 1 1 auto !important;
+}
+
+/* Keep the site title readable and single-line */
+.md-header__title .md-header__ellipsis {
+  color: var(--ink) !important;
+  opacity: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Keep the topic (page title / section label) from colliding */
+.md-header__topic {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  flex: 0 1 auto !important;
+  max-width: 40vw !important;
+}
+
+/* Topic text styling */
+.md-header__topic .md-ellipsis {
+  color: var(--ink-muted) !important;
+  opacity: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* On small screens, hide the topic to preserve the site title */
+@media (max-width: 720px) {
+  .md-header__topic {
+    display: none !important;
+  }
+}
+
+/* Ensure header buttons/icons don't get dimmed */
+.md-header .md-header__button,
+.md-header .md-header__button * {
+  color: var(--ink) !important;
+  opacity: 1 !important;
+}
+
+/* =======================================================
+   SEARCH VISIBILITY (FIXED)
+   - The "Search" label is a header button label, not an input placeholder.
+   ======================================================= */
+
+/* Search label text ("Search") */
+.md-header .md-search__label,
+.md-header .md-search__label span {
+  color: var(--ink) !important;
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}
+
+/* Search icon */
+.md-header .md-search__icon,
+.md-header .md-search__icon svg,
+.md-header .md-search__label .md-icon,
+.md-header .md-search__label .md-icon svg {
+  color: var(--ink) !important;
+  fill: currentColor !important;
+  opacity: 1 !important;
+}
+
+/* Make the header search control look like a clean pill */
+.md-header .md-search__label {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(31, 41, 55, 0.18) !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+}
+
+/* When the search is opened/active */
+.md-header .md-search--active .md-search__label {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(15, 118, 110, 0.35) !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12) !important;
+}
+
+/* Search input inside the expanded search */
+.md-search__input {
+  color: var(--ink) !important;
+  opacity: 1 !important;
+}
+
+/* Placeholder inside the expanded search input */
+.md-search__input::placeholder {
+  color: var(--ink-muted) !important;
+  opacity: 1 !important;
+}
+
+/* =======================================================
+   TABS WRAP + PILL STYLE
+   ======================================================= */
 .md-tabs .md-grid {
   max-width: 100% !important;
   padding-left: 14px !important;
   padding-right: 14px !important;
 }
 
-/* =======================================================
-   TOP TABS — POLISHED (PILL STYLE) + WRAP
-   ======================================================= */
 .md-tabs__list {
   width: 100% !important;
   display: flex !important;
   flex-wrap: wrap !important;
-  justify-content: center !important; /* looks balanced */
-  gap: 10px 14px !important;          /* consistent spacing */
+  justify-content: center !important;
+  gap: 10px 14px !important;
   padding: 10px 0 !important;
 }
 
@@ -105,7 +202,7 @@
   border-bottom: 0 !important;
 }
 
-/* On smaller screens, left align so it feels natural */
+/* On smaller screens, left align */
 @media (max-width: 720px) {
   .md-tabs__list {
     justify-content: flex-start !important;
@@ -123,7 +220,7 @@
   border-radius: 8px;
 }
 
-/* SECTION HEADERS */
+/* Section headers */
 .md-nav--primary .md-nav__item--section > .md-nav__title,
 .md-nav--primary .md-nav__item--section > .md-nav__link {
   display: flex !important;
@@ -144,9 +241,10 @@
   margin-left: auto !important;
   background: transparent !important;
   color: inherit !important;
+  opacity: 1 !important;
 }
 
-/* ACTIVE PAGE LINK */
+/* Active page link */
 .md-nav--primary .md-nav__link--active {
   background-color: rgba(152, 226, 198, 0.20) !important;
   color: var(--accent) !important;
@@ -167,7 +265,7 @@
   border-radius: 10px;
   padding: 10px 12px !important;
   margin-bottom: 10px !important;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
 /* TOC links */
@@ -190,4 +288,37 @@
 
 .md-nav--secondary .md-nav__link--active * {
   color: inherit !important;
+}
+/* ========= Make header + tabs feel separated (clean divider) ========= */
+.md-header {
+  box-shadow: 0 1px 0 rgba(31, 41, 55, 0.10) !important;
+}
+
+.md-tabs {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+/* ========= Make tab pills crisper ========= */
+.md-tabs__link {
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(31, 41, 55, 0.10) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.md-tabs__link:hover {
+  border-color: rgba(31, 41, 55, 0.16) !important;
+}
+
+.md-tabs__link--active {
+  background: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(15, 118, 110, 0.25) !important;
+}
+
+/* ========= Make search match the mint style ========= */
+.md-header .md-search__label {
+  background: rgba(255, 255, 255, 0.60) !important;
+  border: 1px solid rgba(31, 41, 55, 0.14) !important;
+  box-shadow: none !important;
 }

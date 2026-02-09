@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS340 Project Plan Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light mode colors */
+            --primary: #6d28d9;
+            --primary-light: #8b5cf6;
+            --secondary: #f0f9ff;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --card: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --rose: #f43f5e;
+            --raghad: #8b5cf6;
+            --shoug: #10b981;
+            --yara: #f59e0b;
+            --shared: #3b82f6;
+            --notes: #8b5cf6;
+            --tools: #06b6d4;
+        }
+
+        .dark-mode {
+            /* Dark mode colors */
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --secondary: #1e1b4b;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-light: #cbd5e1;
+            --border: #334155;
+            --shadow: rgba(0, 0, 0, 0.25);
+            --card: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.2s;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header h1 i {
+            font-size: 32px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Search */
+        .search-container {
+            position: relative;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .search-input {
+            padding: 12px 20px 12px 45px;
+            border-radius: 50px;
+            border: 2px solid var(--border);
+            background-color: var(--surface);
+            color: var(--text);
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            background-color: var(--surface);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 14px 24px;
+            background-color: var(--surface);
+            border: none;
+            border-radius: 12px;
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .tab-btn.active {
+            color: white;
+        }
+
+        .tab-btn.rose.active { background-color: var(--rose); }
+        .tab-btn.raghad.active { background-color: var(--raghad); }
+        .tab-btn.shoug.active { background-color: var(--shoug); }
+        .tab-btn.yara.active { background-color: var(--yara); }
+        .tab-btn.shared.active { background-color: var(--shared); }
+        .tab-btn.notes.active { background-color: var(--notes); }
+        .tab-btn.tools.active { background-color: var(--tools); }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            background-color: var(--card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            min-height: 600px;
+            animation: fadeIn 0.5s;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-title {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tab-title i {
+            font-size: 32px;
+        }
+
+        .module-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-chip {
+            background-color: var(--surface);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Content sections - Single column for expanded view */
+        .content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .content-card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 30px;
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .content-card.expanded {
+            border-left: 5px solid var(--warning);
+            max-height: none;
+            z-index: 10;
+        }
+
+        /* When expanded, take most of the screen */
+        .content-card.expanded {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .phase-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .expand-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--text-light);
+            transition: transform 0.3s;
+            font-size: 20px;
+        }
+
+        .content-card.expanded .expand-icon {
+            transform: rotate(180deg);
+            color: var(--warning);
+        }
+
+        .card-summary {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            max-height: 150px;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            font-size: 16px;
+        }
+
+        .content-card.expanded .card-summary {
+            max-height: none;
+        }
+
+        .card-list {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .card-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .card-list li:last-child {
+            border-bottom: none;
+        }
+
+        .card-list li i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        /* Phase Details - Much larger when expanded */
+        .phase-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 0;
+            border-top: 1px solid transparent;
+        }
+
+        .content-card.expanded .phase-details {
+            max-height: 5000px;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            margin-top: 20px;
+        }
+
+        .details-section {
+            margin-bottom: 35px;
+            width: 100%;
+        }
+
+        .details-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .details-title i {
+            font-size: 22px;
+        }
+
+        .steps-list {
+            list-style-type: none;
+            counter-reset: step-counter;
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .steps-list li {
+            padding: 18px 0 18px 60px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .steps-list li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tools-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .tools-list li {
+            background-color: var(--background);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .tools-list li i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* Shared Work Tab - Fixed collaboration points */
+        .shared-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .collaboration-section {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .collab-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .collab-list {
+            list-style-type: none;
+        }
+
+        .collab-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 17px;
+        }
+
+        .collab-list li:last-child {
+            border-bottom: none;
+        }
+
+        .collab-list li i {
+            color: var(--success);
+            margin-top: 3px;
+        }
+
+        /* Notes tab */
+        .notes-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .note-card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--warning);
+        }
+
+        .note-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .note-content {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Arabic font */
+        .arabic {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .shared-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .controls {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .tab-btn {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .steps-list li {
+                padding-left: 50px;
+                font-size: 16px;
+            }
+            
+            .steps-list li:before {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-project-diagram"></i> CS340 Project Plan Dashboard</h1>
+            <div class="controls">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search for tasks, tools, phases...">
+                </div>
+                <div class="language-toggle">
+                    <button class="lang-btn active" id="lang-en">
+                        <i class="fas fa-language"></i> English
+                    </button>
+                    <button class="lang-btn" id="lang-ar">
+                        <i class="fas fa-language"></i> العربية
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn rose active" data-tab="rose">
+                <i class="fas fa-user-shield"></i> <span class="en-text">Rose</span><span class="ar-text arabic" style="display: none;">روز</span>
+            </button>
+            <button class="tab-btn raghad" data-tab="raghad">
+                <i class="fas fa-heartbeat"></i> <span class="en-text">Raghad</span><span class="ar-text arabic" style="display: none;">رغد</span>
+            </button>
+            <button class="tab-btn shoug" data-tab="shoug">
+                <i class="fas fa-exclamation-triangle"></i> <span class="en-text">Shoug</span><span class="ar-text arabic" style="display: none">شوق</span>
+            </button>
+            <button class="tab-btn yara" data-tab="yara">
+                <i class="fas fa-calendar-check"></i> <span class="en-text">Yara</span><span class="ar-text arabic" style="display: none">يارا</span>
+            </button>
+            <button class="tab-btn shared" data-tab="shared">
+                <i class="fas fa-users"></i> <span class="en-text">Shared Work</span><span class="ar-text arabic" style="display: none">العمل المشترك</span>
+            </button>
+            <button class="tab-btn notes" data-tab="notes">
+                <i class="fas fa-sticky-note"></i> <span class="en-text">Notes</span><span class="ar-text arabic" style="display: none">الملاحظات</span>
+            </button>
+            <button class="tab-btn tools" data-tab="tools">
+                <i class="fas fa-tools"></i> <span class="en-text">Tools</span><span class="ar-text arabic" style="display: none">الأدوات</span>
+            </button>
+        </div>
+
+        <!-- Tab Contents -->
+        
+        <!-- Rose Tab -->
+        <div class="tab-content active" id="rose">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-user-shield" style="color: var(--rose);"></i>
+                    <div>
+                        <div class="en-text">Rose - User & Access Control Module</div>
+                        <div class="ar-text arabic" style="display: none;">روز - وحدة التحكم بالمستخدمين والوصول</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="en-text">Authentication, Roles, Audit Logging</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="ar-text arabic" style="display: none;">المصادقة، الأدوار، سجل المراجعة</div>
+                    </div>
+                </div>
+                <div class="module-info">
+                    <div class="info-chip">
+                        <i class="fas fa-layer-group"></i>
+                        <span class="en-text">Phases 2-5</span>
+                        <span class="ar-text arabic" style="display: none">المراحل 2-5</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-database"></i>
+                        <span class="en-text">MySQL, Node.js</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="en-text">Independent Module</span>
+                        <span class="ar-text arabic" style="display: none">وحدة مستقلة</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Phase 2 Card -->
+                <div class="content-card" data-phase="2">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 2 - EER Diagram</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 2 - مخطط EER</div>
+                        <div class="phase-badge">Design</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Define entities: USER, ROLE, AUDIT_LOG with relationships and constraints.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تحديد الكيانات: USER, ROLE, AUDIT_LOG مع العلاقات والقيود.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Use diagrams.net or Lucidchart</li>
+                            <li><i class="fas fa-check-circle"></i> Define keys and relationships</li>
+                            <li><i class="fas fa-check-circle"></i> Add constraints (unique email, hashed password)</li>
+                            <li><i class="fas fa-check-circle"></i> Team checkpoint for verification</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> استخدام diagrams.net أو Lucidchart</li>
+                            <li><i class="fas fa-check-circle"></i> تحديد المفاتيح والعلاقات</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة القيود (بريد إلكتروني فريد، كلمة مرور مشفرة)</li>
+                            <li><i class="fas fa-check-circle"></i> نقطة تفتيش الفريق للتحقق</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) OR Lucidchart (EER diagram)</li>
+                                <li><i class="fas fa-file-alt"></i> Phase 1 requirements (roles + audit/log requirement)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) أو Lucidchart (مخطط EER)</li>
+                                <li><i class="fas fa-file-alt"></i> متطلبات المرحلة 1 (الأدوار + متطلبات المراجعة/السجل)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 2</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 2</div>
+                            <ol class="steps-list en-text">
+                                <li>Define entities: USER (stores identity + credentials), ROLE (optional table) OR role attribute inside USER, AUDIT_LOG (stores user activity)</li>
+                                <li>Define keys: USER: user_id as PK, AUDIT_LOG: log_id as PK, If ROLE is separate: role_id as PK</li>
+                                <li>Add relationships: USER (1) - (M) AUDIT_LOG ("a user generates many logs; each log belongs to one user")</li>
+                                <li>Add constraints: Every USER must have a role (Citizen/Admin/Provider), Email must be unique, Credentials required (password stored hashed), AUDIT_LOG must reference a valid USER</li>
+                                <li>Team checkpoint (quick review): One teammate verifies cardinalities, Another teammate verifies roles match Phase 1</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تحديد الكيانات: USER (يخزن الهوية + بيانات الاعتماد)، ROLE (جدول اختياري) أو سمة دور داخل USER، AUDIT_LOG (يخزن نشاط المستخدم)</li>
+                                <li>تحديد المفاتيح: USER: user_id كمفتاح أساسي، AUDIT_LOG: log_id كمفتاح أساسي، إذا كان ROLE منفصلًا: role_id كمفتاح أساسي</li>
+                                <li>إضافة العلاقات: USER (1) - (M) AUDIT_LOG ("يولد المستخدم سجلات كثيرة؛ ينتمي كل سجل إلى مستخدم واحد")</li>
+                                <li>إضافة القيود: يجب أن يكون لكل USER دور (مواطن/مسؤول/مزود)، يجب أن يكون البريد الإلكتروني فريدًا، مطلوب بيانات اعتماد (كلمة مرور مخزنة مشفرة)، يجب أن يشير AUDIT_LOG إلى مستخدم صالح</li>
+                                <li>نقطة تفتيش الفريق (مراجعة سريعة): يقوم زميل واحد بالتحقق من العلاقات، يقوم زميل آخر بالتحقق من مطابقة الأدوار للمرحلة 1</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 Card -->
+                <div class="content-card" data-phase="3">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 3 - Relational Design</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 3 - التصميم العلائقي</div>
+                        <div class="phase-badge">Schema</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Map entities to tables, define foreign keys and constraints.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تعيين الكيانات إلى الجداول، وتحديد المفاتيح الخارجية والقيود.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> USER and AUDIT_LOG tables</li>
+                            <li><i class="fas fa-check-circle"></i> Decide role representation (ENUM or table)</li>
+                            <li><i class="fas fa-check-circle"></i> Add NOT NULL and UNIQUE constraints</li>
+                            <li><i class="fas fa-check-circle"></i> Share USER PK definition with team</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> جداول USER و AUDIT_LOG</li>
+                            <li><i class="fas fa-check-circle"></i> تحديد تمثيل الدور (ENUM أو جدول)</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة قيود NOT NULL و UNIQUE</li>
+                            <li><i class="fas fa-check-circle"></i> مشاركة تعريف USER PK مع الفريق</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-file-word"></i> Google Docs / Word (write schema + explanation)</li>
+                                <li><i class="fas fa-project-diagram"></i> Optional: dbdiagram.io (visual relational schema)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-file-word"></i> Google Docs / Word (كتابة المخطط + الشرح)</li>
+                                <li><i class="fas fa-project-diagram"></i> اختياري: dbdiagram.io (مخطط علائقي مرئي)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 3</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 3</div>
+                            <ol class="steps-list en-text">
+                                <li>Map entities to tables: USER(user_id PK, email UNIQUE, full_name, role, password_hash, created_at), AUDIT_LOG(log_id PK, user_id FK, action, timestamp, metadata)</li>
+                                <li>Decide role representation (team decision): Option A (simpler for CS340): role is an ENUM-like attribute in USER, Option B: ROLE table + FK in USER, Choose one and keep consistent everywhere</li>
+                                <li>Add constraints: email UNIQUE NOT NULL, password_hash NOT NULL, user_id FK in AUDIT_LOG with ON DELETE behavior (team chooses: CASCADE or RESTRICT)</li>
+                                <li>Write short mapping explanation: Why audit log is separate (multi-entry history, security, traceability)</li>
+                                <li>Integration alignment: Share final USER(user_id) definition with other members so they reference the correct PK name/type</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تعيين الكيانات إلى الجداول: USER(user_id PK, email UNIQUE, full_name, role, password_hash, created_at), AUDIT_LOG(log_id PK, user_id FK, action, timestamp, metadata)</li>
+                                <li>تحديد تمثيل الدور (قرار الفريق): الخيار أ (أبسط لـ CS340): role هو سمة تشبه ENUM في USER، الخيار ب: جدول ROLE + FK في USER، اختر واحدًا وابقَ متسقًا في كل مكان</li>
+                                <li>إضافة القيود: email UNIQUE NOT NULL, password_hash NOT NULL, user_id FK في AUDIT_LOG مع سلوك ON DELETE (يختار الفريق: CASCADE أو RESTRICT)</li>
+                                <li>كتابة شرح قصير للتعيين: لماذا سجل المراجعة منفصل (تاريخ متعدد الإدخالات، الأمان، القدرة على التتبع)</li>
+                                <li>محاذاة التكامل: شارك تعريف USER(user_id) النهائي مع الأعضاء الآخرين حتى يشيروا إلى اسم/نوع PK الصحيح</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 Card -->
+                <div class="content-card" data-phase="4">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 4 - SQL Implementation</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 4 - تنفيذ SQL</div>
+                        <div class="phase-badge">Development</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Write DDL scripts, insert test data, and validate integrity.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            كتابة نصوص DDL، وإدخال بيانات الاختبار، والتحقق من السلامة.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Create tables with MySQL</li>
+                            <li><i class="fas fa-check-circle"></i> Insert ≥10 users and 10-30 audit logs</li>
+                            <li><i class="fas fa-check-circle"></i> Test referential integrity</li>
+                            <li><i class="fas fa-check-circle"></i> Export schema.sql and seed.sql</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> إنشاء الجداول باستخدام MySQL</li>
+                            <li><i class="fas fa-check-circle"></i> إدخال ≥10 مستخدمين و 10-30 سجل مراجعة</li>
+                            <li><i class="fas fa-check-circle"></i> اختبار سلامة الإحالة</li>
+                            <li><i class="fas fa-check-circle"></i> تصدير schema.sql و seed.sql</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-database"></i> DBMS: MySQL (likely for CS340) + MySQL Workbench OR phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> Optional: VS Code + SQL file (schema.sql, seed.sql)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-database"></i> نظام إدارة قواعد البيانات: MySQL (على الأرجح لـ CS340) + MySQL Workbench أو phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> اختياري: VS Code + ملف SQL (schema.sql, seed.sql)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 4</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 4</div>
+                            <ol class="steps-list en-text">
+                                <li>Write DDL scripts: CREATE TABLE user (...), CREATE TABLE audit_log (...) with FK referencing USER</li>
+                                <li>Choose FK delete rule (team-consistent): Recommended: AUDIT_LOG.user_id → USER.user_id ON DELETE CASCADE (keeps DB clean) OR RESTRICT (keeps logs as evidence, but requires strategy). Pick one based on team policy</li>
+                                <li>Insert test data: Insert ≥10 users, Insert ≥10 - 30 logs with different actions: LOGIN_SUCCESS, LOGIN_FAIL, CREATE_FAMILY_MEMBER, BOOK_APPOINTMENT, ALERT_GENERATED</li>
+                                <li>Verify integrity: Try inserting a log with a non-existing user_id (should fail), Try inserting duplicate email (should fail)</li>
+                                <li>Export scripts: Deliver schema.sql + seed.sql to the team repo</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>كتابة نصوص DDL: CREATE TABLE user (...), CREATE TABLE audit_log (...) مع FK تشير إلى USER</li>
+                                <li>اختر قاعدة حذف FK (متسقة مع الفريق): موصى به: AUDIT_LOG.user_id → USER.user_id ON DELETE CASCADE (يبقي قاعدة البيانات نظيفة) أو RESTRICT (يحتفظ بالسجلات كدليل، لكنه يتطلب استراتيجية). اختر واحدة بناءً على سياسة الفريق</li>
+                                <li>أدخل بيانات الاختبار: أدخل ≥10 مستخدمين، أدخل ≥10 - 30 سجلًا بإجراءات مختلفة: LOGIN_SUCCESS, LOGIN_FAIL, CREATE_FAMILY_MEMBER, BOOK_APPOINTMENT, ALERT_GENERATED</li>
+                                <li>تحقق من السلامة: حاول إدراج سجل مع user_id غير موجود (يجب أن يفشل)، حاول إدراج بريد إلكتروني مكرر (يجب أن يفشل)</li>
+                                <li>تصدير النصوص: تسليم schema.sql + seed.sql إلى مستودع الفريق</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 Card -->
+                <div class="content-card" data-phase="5">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 5 - Application & Queries</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 5 - التطبيق والاستعلامات</div>
+                        <div class="phase-badge">Deployment</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Implement backend endpoints, RBAC, and audit logging.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تنفيذ نقاط نهاية الخلفية، RBAC، وتسجيل المراجعة.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Node.js/Express backend with MySQL</li>
+                            <li><i class="fas fa-check-circle"></i> Implement /auth/register, /auth/login</li>
+                            <li><i class="fas fa-check-circle"></i> Role-based access control middleware</li>
+                            <li><i class="fas fa-check-circle"></i> 5 basic + 5 advanced SQL queries</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> Node.js/Express مع MySQL</li>
+                            <li><i class="fas fa-check-circle"></i> تنفيذ /auth/register, /auth/login</li>
+                            <li><i class="fas fa-check-circle"></i> وسيط التحكم في الوصول القائم على الدور</li>
+                            <li><i class="fas fa-check-circle"></i> 5 استعلامات أساسية + 5 متقدمة</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fab fa-node-js"></i> Backend: Node.js with Express.js</li>
+                                <li><i class="fas fa-database"></i> Database: MySQL, Database Connector: mysql2 (Node.js)</li>
+                                <li><i class="fas fa-key"></i> Password Security: bcrypt</li>
+                                <li><i class="fas fa-vial"></i> API Testing: Postman or browser</li>
+                                <li><i class="fas fa-code"></i> Development Environment: VS Code</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fab fa-node-js"></i> الخلفية: Node.js مع Express.js</li>
+                                <li><i class="fas fa-database"></i> قاعدة البيانات: MySQL، موصل قاعدة البيانات: mysql2 (Node.js)</li>
+                                <li><i class="fas fa-key"></i> أمان كلمة المرور: bcrypt</li>
+                                <li><i class="fas fa-vial"></i> اختبار API: Postman أو المتصفح</li>
+                                <li><i class="fas fa-code"></i> بيئة التطوير: VS Code</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 5</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 5</div>
+                            <ol class="steps-list en-text">
+                                <li>Backend Endpoints (Minimum Required): Implement Express routes: POST /auth/register (Registers a new user and stores hashed credentials), POST /auth/login (Authenticates user credentials), GET /admin/audit-logs (Retrieves all audit logs - Admin access only)</li>
+                                <li>Login Validation Flow: 1. Receive email and password from request body, 2. Query USER table by email, 3. Compare password using bcrypt.compare(), 4. Return authentication success or failure response. This flow must be logged in the audit table</li>
+                                <li>Role-Based Access Control (RBAC): Implement Express middleware that checks user role after authentication and allows or denies access based on role. Example: Only users with role Admin can access /admin/audit-logs</li>
+                                <li>Audit Log Insertion: Audit logging must occur automatically. On every login attempt: Insert a row into AUDIT_LOG with user_id, action (LOGIN_SUCCESS / LOGIN_FAILED), timestamp. For major system actions owned by other modules: Provide a shared helper function: logAction(user_id, action, metadata) for other team members to call from their modules</li>
+                                <li>SQL Queries Requirement (CS340): 5 Basic Queries (Insert new user, Select user by email, Insert audit log, Select audit logs for user, Update user role) and 5 Advanced Queries (Count login attempts per user, Filter failed login attempts in last 7 days, Join USER and AUDIT_LOG, Retrieve top 5 most active users, Detect suspicious activity)</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>نقاط نهاية الخلفية (الحد الأدنى المطلوب): تنفيذ مسارات Express: POST /auth/register (يسجل مستخدمًا جديدًا ويخزن بيانات الاعتماد المشفرة)، POST /auth/login (يصدق بيانات اعتماد المستخدم)، GET /admin/audit-logs (استرداد جميع سجلات المراجعة - وصول المسؤول فقط)</li>
+                                <li>تدفق التحقق من تسجيل الدخول: 1. استقبال البريد الإلكتروني وكلمة المرور من جسم الطلب، 2. استعلام جدول USER بالبريد الإلكتروني، 3. مقارنة كلمة المرور باستخدام bcrypt.compare()، 4. إرجاع استجابة نجاح أو فشل المصادقة. يجب تسجيل هذا التدفق في جدول المراجعة</li>
+                                <li>التحكم في الوصول القائم على الدور (RBAC): تنفيذ وسيط Express يتحقق من دور المستخدم بعد المصادقة ويسمح أو يرفض الوصول بناءً على الدور. مثال: فقط المستخدمون الذين لديهم دور المسؤول يمكنهم الوصول إلى /admin/audit-logs</li>
+                                <li>إدراج سجل المراجعة: يجب أن يحدث تسجيل المراجعة تلقائيًا. في كل محاولة تسجيل دخول: أدخل صفًا في AUDIT_LOG مع user_id، action (LOGIN_SUCCESS / LOGIN_FAILED)، timestamp. للإجراءات الرئيسية للنظام المملوكة للوحدات الأخرى: تقديم وظيفة مساعدة مشتركة: logAction(user_id, action, metadata) للأعضاء الآخرين في الفريق للاستدعاء من وحداتهم</li>
+                                <li>متطلبات استعلامات SQL (CS340): 5 استعلامات أساسية (إدراج مستخدم جديد، تحديد المستخدم بالبريد الإلكتروني، إدراج سجل مراجعة، تحديد سجلات المراجعة للمستخدم، تحديث دور المستخدم) و5 استعلامات متقدمة (عد محاولات تسجيل الدخول لكل مستخدم، تصفية محاولات تسجيل الدخول الفاشلة في آخر 7 أيام، الانضمام إلى USER و AUDIT_LOG، استرداد أفضل 5 مستخدمين نشطين، اكتشاف النشاط المشبوه)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raghad Tab -->
+        <div class="tab-content" id="raghad">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-heartbeat" style="color: var(--raghad);"></i>
+                    <div>
+                        <div class="en-text">Raghad - Family & Medical History Module</div>
+                        <div class="ar-text arabic" style="display: none;">رغد - وحدة التاريخ العائلي والطبي</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="en-text">Family structure and medical history management</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="ar-text arabic" style="display: none;">هيكل الأسرة وإدارة التاريخ الطبي</div>
+                    </div>
+                </div>
+                <div class="module-info">
+                    <div class="info-chip">
+                        <i class="fas fa-layer-group"></i>
+                        <span class="en-text">Phases 2-5</span>
+                        <span class="ar-text arabic" style="display: none">المراحل 2-5</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-database"></i>
+                        <span class="en-text">MySQL, Node.js</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-handshake"></i>
+                        <span class="en-text">Feeds Risk Module</span>
+                        <span class="ar-text arabic" style="display: none">يغذي وحدة المخاطر</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Phase 2 Card -->
+                <div class="content-card" data-phase="2">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 2 - EER Diagram</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 2 - مخطط EER</div>
+                        <div class="phase-badge">Design</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Define FAMILY_MEMBER and HEALTH_EVENT entities with relationships.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تحديد كيانات FAMILY_MEMBER و HEALTH_EVENT مع العلاقات.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> FAMILY_MEMBER with PK family_member_id</li>
+                            <li><i class="fas fa-check-circle"></i> HEALTH_EVENT with PK event_id</li>
+                            <li><i class="fas fa-check-circle"></i> Relationships: USER → FAMILY_MEMBER → HEALTH_EVENT</li>
+                            <li><i class="fas fa-check-circle"></i> Team checkpoint with Rose and Shoug</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> FAMILY_MEMBER مع PK family_member_id</li>
+                            <li><i class="fas fa-check-circle"></i> HEALTH_EVENT مع PK event_id</li>
+                            <li><i class="fas fa-check-circle"></i> العلاقات: USER → FAMILY_MEMBER → HEALTH_EVENT</li>
+                            <li><i class="fas fa-check-circle"></i> نقطة تفتيش الفريق مع روز وشوق</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) or Lucidchart (EER modeling)</li>
+                                <li><i class="fas fa-file-alt"></i> Phase 1 reference: Add/Edit Family Member screen, Add Health Event requirement (FR-02)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) أو Lucidchart (نمذجة EER)</li>
+                                <li><i class="fas fa-file-alt"></i> مرجع المرحلة 1: شاشة إضافة/تحرير عضو الأسرة، متطلب إضافة حدث صحي (FR-02)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 2</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 2</div>
+                            <ol class="steps-list en-text">
+                                <li>Define entities: FAMILY_MEMBER (Represents individuals within a user's family), HEALTH_EVENT (Represents recorded health conditions/events)</li>
+                                <li>Define primary keys: FAMILY_MEMBER: family_member_id (PK), HEALTH_EVENT: event_id (PK)</li>
+                                <li>Define relationships: USER (1) (M) FAMILY_MEMBER (a user can have multiple family members), FAMILY_MEMBER (1) (M) HEALTH_EVENT (a family member can have multiple health events)</li>
+                                <li>Add constraints: Every FAMILY_MEMBER must belong to exactly one USER, Every HEALTH_EVENT must belong to exactly one FAMILY_MEMBER, onset_age must be a non-negative integer, severity should use controlled values (Low / Medium / High)</li>
+                                <li>Team checkpoint: Confirm USER.user_id naming with Rose, Confirm severity values match what Shoug expects for risk logic</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تحديد الكيانات: FAMILY_MEMBER (يمثل الأفراد داخل أسرة المستخدم)، HEALTH_EVENT (يمثل الحالات الصحية/الأحداث المسجلة)</li>
+                                <li>تحديد المفاتيح الأساسية: FAMILY_MEMBER: family_member_id (PK)، HEALTH_EVENT: event_id (PK)</li>
+                                <li>تحديد العلاقات: USER (1) (M) FAMILY_MEMBER (يمكن للمستخدم أن يكون لديه أعضاء أسرة متعددين)، FAMILY_MEMBER (1) (M) HEALTH_EVENT (يمكن لعضو الأسرة أن يكون لديه أحداث صحية متعددة)</li>
+                                <li>إضافة القيود: يجب أن ينتمي كل FAMILY_MEMBER إلى مستخدم واحد بالضبط، يجب أن ينتمي كل HEALTH_EVENT إلى عضو أسرة واحد بالضبط، onset_age يجب أن يكون عددًا صحيحًا غير سالب، يجب أن تستخدم severity قيمًا خاضعة للتحكم (منخفض / متوسط / عالي)</li>
+                                <li>نقطة تفتيش الفريق: تأكيد تسمية USER.user_id مع روز، تأكيد مطابقة قيم severity لما يتوقعه شوق لمنطق المخاطر</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 Card -->
+                <div class="content-card" data-phase="3">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 3 - Relational Design</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 3 - التصميم العلائقي</div>
+                        <div class="phase-badge">Schema</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Map entities to tables, define foreign keys and constraints.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تعيين الكيانات إلى الجداول، وتحديد المفاتيح الخارجية والقيود.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> FAMILY_MEMBER and HEALTH_EVENT tables</li>
+                            <li><i class="fas fa-check-circle"></i> Define foreign keys to USER and FAMILY_MEMBER</li>
+                            <li><i class="fas fa-check-circle"></i> Add is_hereditary field for risk analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Share table definitions with Shoug</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> جداول FAMILY_MEMBER و HEALTH_EVENT</li>
+                            <li><i class="fas fa-check-circle"></i> تحديد المفاتيح الخارجية لـ USER و FAMILY_MEMBER</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة حقل is_hereditary لتحليل المخاطر</li>
+                            <li><i class="fas fa-check-circle"></i> مشاركة تعريفات الجداول مع شوق</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-file-word"></i> Docs/Word (schema + explanation)</li>
+                                <li><i class="fas fa-project-diagram"></i> Optional: dbdiagram.io for relational visualization</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-file-word"></i> Docs/Word (المخطط + الشرح)</li>
+                                <li><i class="fas fa-project-diagram"></i> اختياري: dbdiagram.io للتصور العلائقي</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 3</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 3</div>
+                            <ol class="steps-list en-text">
+                                <li>Map entities to tables: FAMILY_MEMBER(family_member_id PK, user_id FK, relation, gender, dob), HEALTH_EVENT(event_id PK, family_member_id FK, condition, onset_age, severity, is_hereditary)</li>
+                                <li>Define foreign keys: FAMILY_MEMBER.user_id → USER.user_id, HEALTH_EVENT.family_member_id → FAMILY_MEMBER.family_member_id</li>
+                                <li>Add design decisions: Include is_hereditary (BOOLEAN) to support risk analysis, Store dob instead of age to keep data consistent over time</li>
+                                <li>Write short mapping explanation: FAMILY_MEMBER represents family structure, HEALTH_EVENT captures time-based medical history per individual</li>
+                                <li>Integration alignment: Share final table definitions with Shoug so alert aggregation queries align</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تعيين الكيانات إلى الجداول: FAMILY_MEMBER(family_member_id PK, user_id FK, relation, gender, dob), HEALTH_EVENT(event_id PK, family_member_id FK, condition, onset_age, severity, is_hereditary)</li>
+                                <li>تحديد المفاتيح الخارجية: FAMILY_MEMBER.user_id → USER.user_id, HEALTH_EVENT.family_member_id → FAMILY_MEMBER.family_member_id</li>
+                                <li>إضافة قرارات التصميم: تضمين is_hereditary (BOOLEAN) لدعم تحليل المخاطر، تخزين dob بدلاً من العمر للحفاظ على تناسق البيانات مع مرور الوقت</li>
+                                <li>كتابة شرح قصير للتعيين: FAMILY_MEMBER يمثل هيكل الأسرة، HEALTH_EVENT يلتقط التاريخ الطبي القائم على الوقت لكل فرد</li>
+                                <li>محاذاة التكامل: شارك تعريفات الجداول النهائية مع شوق حتى تتماشى استعلامات تجميع التنبيه</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 Card -->
+                <div class="content-card" data-phase="4">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 4 - SQL Implementation</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 4 - تنفيذ SQL</div>
+                        <div class="phase-badge">Development</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Write CREATE TABLE statements, insert test data, and validate.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            كتابة عبارات CREATE TABLE، وإدخال بيانات الاختبار، والتحقق.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Create FAMILY_MEMBER and HEALTH_EVENT tables</li>
+                            <li><i class="fas fa-check-circle"></i> Add ENUM or CHECK constraints for severity</li>
+                            <li><i class="fas fa-check-circle"></i> Insert ≥10 family members and ≥20 health events</li>
+                            <li><i class="fas fa-check-circle"></i> Validate referential integrity</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> إنشاء جداول FAMILY_MEMBER و HEALTH_EVENT</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة قيود ENUM أو CHECK للشدة</li>
+                            <li><i class="fas fa-check-circle"></i> إدراج ≥10 أعضاء أسرة و ≥20 حدثًا صحيًا</li>
+                            <li><i class="fas fa-check-circle"></i> التحقق من سلامة الإحالة</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-database"></i> MySQL Workbench or phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> SQL files: schema.sql, seed.sql</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-database"></i> MySQL Workbench أو phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> ملفات SQL: schema.sql, seed.sql</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 4</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 4</div>
+                            <ol class="steps-list en-text">
+                                <li>Write CREATE TABLE statements: Create FAMILY_MEMBER first, Create HEALTH_EVENT with FK constraint</li>
+                                <li>Add constraints: NOT NULL on: user_id, family_member_id, condition, ENUM or CHECK constraints for: severity (Low / Medium / High), FK constraints with referential integrity enforced</li>
+                                <li>Insert test data: Insert ≥10 family members across multiple users, Insert ≥20 health events: mix hereditary and non-hereditary varying onset ages and severity levels</li>
+                                <li>Validation checks: Attempt inserting a health event with invalid family_member_id → must fail, Ensure each family member has at least one event (for demo clarity)</li>
+                                <li>Export scripts: Provide team with schema + seed data SQL</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>كتابة عبارات CREATE TABLE: إنشاء FAMILY_MEMBER أولاً، إنشاء HEALTH_EVENT مع قيد FK</li>
+                                <li>إضافة القيود: NOT NULL على: user_id, family_member_id, condition، قيود ENUM أو CHECK لـ: severity (منخفض / متوسط / عالي)، قيود FK مع فرض سلامة الإحالة</li>
+                                <li>إدراج بيانات الاختبار: إدراج ≥10 أعضاء أسرة عبر مستخدمين متعددين، إدراج ≥20 حدثًا صحيًا: مزيج من الوراثي وغير الوراثي بأعمار بداية ومستويات شدة مختلفة</li>
+                                <li>فحوصات التحقق: محاولة إدراج حدث صحي مع family_member_id غير صالح → يجب أن يفشل، التأكد من أن كل عضو أسرة لديه حدث واحد على الأقل (لتوضيح العرض التوضيحي)</li>
+                                <li>تصدير النصوص: تزويد الفريق بـ SQL للمخطط + بيانات البذرة</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 Card -->
+                <div class="content-card" data-phase="5">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 5 - Application & Queries</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 5 - التطبيق والاستعلامات</div>
+                        <div class="phase-badge">Deployment</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Implement backend API endpoints and required SQL queries.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تنفيذ نقاط نهاية API الخلفية واستعلامات SQL المطلوبة.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> POST /family-members, POST /health-events</li>
+                            <li><i class="fas fa-check-circle"></i> GET /medical-history endpoint</li>
+                            <li><i class="fas fa-check-circle"></i> 5 basic + 5 advanced SQL queries</li>
+                            <li><i class="fas fa-check-circle"></i> Log integration with Rose's module</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> POST /family-members, POST /health-events</li>
+                            <li><i class="fas fa-check-circle"></i> نقطة نهاية GET /medical-history</li>
+                            <li><i class="fas fa-check-circle"></i> 5 استعلامات أساسية + 5 متقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> تكامل السجل مع وحدة روز</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fab fa-node-js"></i> Backend: Node.js + Express</li>
+                                <li><i class="fas fa-database"></i> DB Connector: mysql2</li>
+                                <li><i class="fas fa-vial"></i> Testing: Postman and/or basic UI forms</li>
+                                <li><i class="fas fa-code"></i> Editor: VS Code</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fab fa-node-js"></i> الخلفية: Node.js + Express</li>
+                                <li><i class="fas fa-database"></i> موصل قاعدة البيانات: mysql2</li>
+                                <li><i class="fas fa-vial"></i> الاختبار: Postman و/أو نماذج واجهة مستخدم أساسية</li>
+                                <li><i class="fas fa-code"></i> المحرر: VS Code</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 5</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 5</div>
+                            <ol class="steps-list en-text">
+                                <li>Backend API Endpoints (Minimum): Implement Express routes: POST /family-members (Adds a new family member for a user), POST /health-events (Records a health event for a family member), GET /medical-history?family_member_id=... (Retrieves all health events for a given family member)</li>
+                                <li>SQL Queries Requirement (CS340): 5 Basic Queries (Insert a family member, Insert a health event, Select all family members for a user, Select health events for a family member, Update a health event), 5 Advanced Queries (Join FAMILY_MEMBER and HEALTH_EVENT, Filter hereditary conditions only, Count conditions per family member, Find earliest onset age per condition, List family members with more than N conditions)</li>
+                                <li>Data Flow for Other Modules: This module feeds data into Risk Alerts & Analysis (Shoug), It does not generate alerts itself, Only provides clean, structured medical data</li>
+                                <li>Logging Integration (With Rose's Module): After major actions, log events: After adding family member: logAction(user_id, "ADD_FAMILY_MEMBER", { family_member_id }), After adding health event: logAction(user_id, "ADD_HEALTH_EVENT", { family_member_id, condition })</li>
+                                <li>Summary: This module establishes the core family and medical data layer of Sillah, demonstrating proper relational modeling, referential integrity, advanced SQL queries, and clean integration with analytics and alerts</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>نقاط نهاية API الخلفية (الحد الأدنى): تنفيذ مسارات Express: POST /family-members (يضيف عضو أسرة جديد للمستخدم)، POST /health-events (يسجل حدثًا صحيًا لعضو الأسرة)، GET /medical-history?family_member_id=... (استرداد جميع الأحداث الصحية لعضو أسرة معين)</li>
+                                <li>متطلبات استعلامات SQL (CS340): 5 استعلامات أساسية (إدراج عضو أسرة، إدراج حدث صحي، تحديد جميع أعضاء الأسرة للمستخدم، تحديد الأحداث الصحية لعضو الأسرة، تحديث حدث صحي)، 5 استعلامات متقدمة (الانضمام إلى FAMILY_MEMBER و HEALTH_EVENT، تصفية الحالات الوراثية فقط، عد الحالات لكل عضو أسرة، العثور على أصغر عمر بداية لكل حالة، قائمة أعضاء الأسرة الذين لديهم أكثر من N حالة)</li>
+                                <li>تدفق البيانات للوحدات الأخرى: تزود هذه الوحدة البيانات إلى وحدة تنبيهات وتحليل المخاطر (شوق)، لا تولد تنبيهات بحد ذاتها، توفر فقط بيانات طبية نظيفة ومنظمة</li>
+                                <li>تكامل التسجيل (مع وحدة روز): بعد الإجراءات الرئيسية، سجل الأحداث: بعد إضافة عضو الأسرة: logAction(user_id, "ADD_FAMILY_MEMBER", { family_member_id })، بعد إضافة حدث صحي: logAction(user_id, "ADD_HEALTH_EVENT", { family_member_id, condition })</li>
+                                <li>الملخص: تؤسس هذه الوحدة طبقة البيانات العائلية والطبية الأساسية لـ Sillah، مما يوضح النمذجة العلائقية المناسبة، وسلامة الإحالة، واستعلامات SQL المتقدمة، والتكامل النظيف مع التحليلات والتنبيهات</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shoug Tab -->
+        <div class="tab-content" id="shoug">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-exclamation-triangle" style="color: var(--shoug);"></i>
+                    <div>
+                        <div class="en-text">Shoug - Risk Alerts & Analysis Module</div>
+                        <div class="ar-text arabic" style="display: none;">شوق - وحدة تنبيهات وتحليل المخاطر</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="en-text">Detection, alerts, and aggregation logic</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="ar-text arabic" style="display: none;">الكشف، التنبيهات، ومنطق التجميع</div>
+                    </div>
+                </div>
+                <div class="module-info">
+                    <div class="info-chip">
+                        <i class="fas fa-layer-group"></i>
+                        <span class="en-text">Phases 2-5</span>
+                        <span class="ar-text arabic" style="display: none">المراحل 2-5</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-database"></i>
+                        <span class="en-text">MySQL, Node.js</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-link"></i>
+                        <span class="en-text">Depends on Medical Data</span>
+                        <span class="ar-text arabic" style="display: none">يعتمد على البيانات الطبية</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Phase 2 Card -->
+                <div class="content-card" data-phase="2">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 2 - EER Diagram</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 2 - مخطط EER</div>
+                        <div class="phase-badge">Design</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Define ALERT entity with relationships to FAMILY_MEMBER and HEALTH_EVENT.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تحديد كيان ALERT مع العلاقات بـ FAMILY_MEMBER و HEALTH_EVENT.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> ALERT entity with PK alert_id</li>
+                            <li><i class="fas fa-check-circle"></i> Relationship: FAMILY_MEMBER (1) (M) ALERT</li>
+                            <li><i class="fas fa-check-circle"></i> Connect to HEALTH_EVENT aggregation</li>
+                            <li><i class="fas fa-check-circle"></i> Add status and risk_level constraints</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> كيان ALERT مع PK alert_id</li>
+                            <li><i class="fas fa-check-circle"></i> العلاقة: FAMILY_MEMBER (1) (M) ALERT</li>
+                            <li><i class="fas fa-check-circle"></i> الاتصال بتجميع HEALTH_EVENT</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة قيود status و risk_level</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) / Lucidchart (EER diagram)</li>
+                                <li><i class="fas fa-file-alt"></i> Phase 1 reference: Risk Alerts screen, "Generate Risk Alert" requirement (FR-03), Alert history (FR-06)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) / Lucidchart (مخطط EER)</li>
+                                <li><i class="fas fa-file-alt"></i> مرجع المرحلة 1: شاشة تنبيهات المخاطر، متطلب "إنشاء تنبيه مخاطر" (FR-03)، تاريخ التنبيه (FR-06)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 2</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 2</div>
+                            <ol class="steps-list en-text">
+                                <li>Define entity: ALERT with attributes: alert_id (PK), family_member_id (FK), risk_level (Low/Moderate/High), description, created_date, status (Active/Resolved)</li>
+                                <li>Define relationship: FAMILY_MEMBER (1) (M) ALERT (a family member can receive multiple alerts over time)</li>
+                                <li>Connect to Health Events (conceptual reference): ALERT is derived from HEALTH_EVENT aggregation. In EER, you can show this as a relationship "derived_from" (optional), or explain in text: risk_level is computed from HEALTH_EVENT records</li>
+                                <li>Add constraints: status ∈ {Active, Resolved}, risk_level ∈ {Low, Moderate, High}, every ALERT must reference a valid family member</li>
+                                <li>Team checkpoint: Confirm shared key name: family_member_id, Confirm "risk level" values match Phase 1 wording</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تحديد الكيان: ALERT مع السمات: alert_id (PK)، family_member_id (FK)، risk_level (منخفض/متوسط/عالي)، description، created_date، status (نشط/تم الحل)</li>
+                                <li>تحديد العلاقة: FAMILY_MEMBER (1) (M) ALERT (يمكن لعضو الأسرة استقبال تنبيهات متعددة بمرور الوقت)</li>
+                                <li>الاتصال بأحداث الصحة (مرجع مفاهيمي): ALERT مشتق من تجميع HEALTH_EVENT. في EER، يمكنك عرض هذا كعلاقة "derived_from" (اختياري)، أو الشرح في النص: risk_level محسوب من سجلات HEALTH_EVENT</li>
+                                <li>إضافة القيود: status ∈ {نشط، تم الحل}، risk_level ∈ {منخفض، متوسط، عالي}، يجب أن يشير كل ALERT إلى عضو أسرة صالح</li>
+                                <li>نقطة تفتيش الفريق: تأكيد اسم المفتاح المشترك: family_member_id، تأكيد مطابقة قيم "مستوى المخاطر" مع صياغة المرحلة 1</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 Card -->
+                <div class="content-card" data-phase="3">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 3 - Relational Design</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 3 - التصميم العلائقي</div>
+                        <div class="phase-badge">Schema</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Create ALERT table schema, define foreign keys and constraints.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            إنشاء مخطط جدول ALERT، وتحديد المفاتيح الخارجية والقيود.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> ALERT table with PK alert_id</li>
+                            <li><i class="fas fa-check-circle"></i> Foreign key to FAMILY_MEMBER</li>
+                            <li><i class="fas fa-check-circle"></i> ENUM for risk_level and status</li>
+                            <li><i class="fas fa-check-circle"></i> Confirm PK names with medical module</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> جدول ALERT مع PK alert_id</li>
+                            <li><i class="fas fa-check-circle"></i> مفتاح خارجي لـ FAMILY_MEMBER</li>
+                            <li><i class="fas fa-check-circle"></i> ENUM لـ risk_level و status</li>
+                            <li><i class="fas fa-check-circle"></i> تأكيد أسماء PK مع الوحدة الطبية</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-file-word"></i> Docs/Word (schema + explanation)</li>
+                                <li><i class="fas fa-project-diagram"></i> Optional: dbdiagram.io for relational diagram</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-file-word"></i> Docs/Word (المخطط + الشرح)</li>
+                                <li><i class="fas fa-project-diagram"></i> اختياري: dbdiagram.io للمخطط العلائقي</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 3</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 3</div>
+                            <ol class="steps-list en-text">
+                                <li>Create ALERT table schema: ALERT(alert_id PK, family_member_id FK, risk_level, description, created_date, status)</li>
+                                <li>Define foreign key: ALERT.family_member_id → FAMILY_MEMBER.family_member_id</li>
+                                <li>Decide if you need event-level linkage (optional, advanced): If you want each alert tied to specific events: create ALERT_EVENT(alert_id FK, event_id FK) (bridge table). If you want simplest implementation (recommended for speed): keep only family_member_id (alerts are per family member)</li>
+                                <li>Write short mapping explanation: Why ALERT is separate from HEALTH_EVENT: alerts are computed outcomes, stored as history, supports "View Alert History"</li>
+                                <li>Integration alignment: Confirm FAMILY_MEMBER PK name/type with the medical module owner, Keep types consistent (e.g., INT)</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>إنشاء مخطط جدول ALERT: ALERT(alert_id PK, family_member_id FK, risk_level, description, created_date, status)</li>
+                                <li>تحديد المفتاح الخارجي: ALERT.family_member_id → FAMILY_MEMBER.family_member_id</li>
+                                <li>تقرير ما إذا كنت تحتاج إلى ربط على مستوى الحدث (اختياري، متقدم): إذا كنت تريد ربط كل تنبيه بأحداث محددة: إنشاء ALERT_EVENT(alert_id FK, event_id FK) (جدول جسر). إذا كنت تريد أبسط تنفيذ (موصى به للسرعة): احتفظ فقط بـ family_member_id (التنبيهات لكل عضو أسرة)</li>
+                                <li>كتابة شرح قصير للتعيين: لماذا ALERT منفصل عن HEALTH_EVENT: التنبيهات هي نتائج محسوبة، مخزنة كتاريخ، تدعم "عرض تاريخ التنبيه"</li>
+                                <li>محاذاة التكامل: تأكيد اسم/نوع PK لـ FAMILY_MEMBER مع مالك الوحدة الطبية، ابقَ متسقًا في الأنواع (مثل INT)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 Card -->
+                <div class="content-card" data-phase="4">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 4 - SQL Implementation</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 4 - تنفيذ SQL</div>
+                        <div class="phase-badge">Development</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Write DDL, insert sample alerts, and validate referential integrity.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            كتابة DDL، إدراج تنبيهات عينة، والتحقق من سلامة الإحالة.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> CREATE TABLE ALERT with constraints</li>
+                            <li><i class="fas fa-check-circle"></i> Use ENUM for risk_level and status</li>
+                            <li><i class="fas fa-check-circle"></i> Insert sample alerts across family members</li>
+                            <li><i class="fas fa-check-circle"></i> Validate with non-existing family_member_id</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> CREATE TABLE ALERT مع القيود</li>
+                            <li><i class="fas fa-check-circle"></i> استخدام ENUM لـ risk_level و status</li>
+                            <li><i class="fas fa-check-circle"></i> إدراج تنبيهات عينة عبر أعضاء الأسرة</li>
+                            <li><i class="fas fa-check-circle"></i> التحقق مع family_member_id غير موجود</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-database"></i> MySQL Workbench / phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> SQL scripts: schema.sql + seed.sql</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-database"></i> MySQL Workbench / phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> نصوص SQL: schema.sql + seed.sql</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 4</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 4</div>
+                            <ol class="steps-list en-text">
+                                <li>Write DDL: CREATE TABLE ALERT (...) with PK, FK, NOT NULL constraints, optional CHECK constraints (if DB supports; MySQL 8 supports CHECK but historically ignored—safe alternative is ENUM)</li>
+                                <li>Recommended: risk_level as ENUM('Low','Moderate','High'), status as ENUM('Active','Resolved')</li>
+                                <li>Insert sample alerts: Create alerts across multiple family members, Include variety: different risk levels, some resolved, some active, different timestamps</li>
+                                <li>Validate referential integrity: attempt insert with non-existing family member_id → must fail</li>
+                                <li>Export scripts: Provide the team with create table SQL and seed data inserts</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>كتابة DDL: CREATE TABLE ALERT (...) مع PK، FK، قيود NOT NULL، قيود CHECK اختيارية (إذا كانت قاعدة البيانات تدعم؛ MySQL 8 تدعم CHECK ولكن تم تجاهلها تاريخيًا - البديل الآمن هو ENUM)</li>
+                                <li>موصى به: risk_level كـ ENUM('منخفض','متوسط','عالي')، status كـ ENUM('نشط','تم الحل')</li>
+                                <li>إدراج تنبيهات عينة: إنشاء تنبيهات عبر أعضاء أسرة متعددين، تضمين تنوع: مستويات مخاطر مختلفة، بعضها تم حله، بعضها نشط، تواريخ مختلفة</li>
+                                <li>التحقق من سلامة الإحالة: محاولة إدراج مع family member_id غير موجود → يجب أن يفشل</li>
+                                <li>تصدير النصوص: تزويد الفريق بـ SQL لإنشاء الجدول وإدراج بيانات البذرة</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 Card -->
+                <div class="content-card" data-phase="5">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 5 - Application & Queries</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 5 - التطبيق والاستعلامات</div>
+                        <div class="phase-badge">Deployment</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Risk scoring logic, backend endpoints, and alert generation flow.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            منطق تسجيل المخاطر، نقاط نهاية الخلفية، وتدفق توليد التنبيه.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Risk detection must remain preventive and educational</li>
+                            <li><i class="fas fa-check-circle"></i> GET /alerts, POST /alerts/generate, PATCH /alerts/:id/resolve</li>
+                            <li><i class="fas fa-check-circle"></i> 5 basic + 5 advanced SQL queries</li>
+                            <li><i class="fas fa-check-circle"></i> Log integration with Rose's module</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> يجب أن يبقى كشف المخاطر وقائيًا وتعليميًا</li>
+                            <li><i class="fas fa-check-circle"></i> GET /alerts, POST /alerts/generate, PATCH /alerts/:id/resolve</li>
+                            <li><i class="fas fa-check-circle"></i> 5 استعلامات أساسية + 5 متقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> تكامل السجل مع وحدة روز</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fab fa-node-js"></i> Backend: Node.js with Express.js</li>
+                                <li><i class="fas fa-database"></i> Database: MySQL, DB Connector: mysql2 (Node.js)</li>
+                                <li><i class="fas fa-vial"></i> Testing: Postman and/or basic UI pages</li>
+                                <li><i class="fas fa-code"></i> Development Environment: VS Code</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fab fa-node-js"></i> الخلفية: Node.js مع Express.js</li>
+                                <li><i class="fas fa-database"></i> قاعدة البيانات: MySQL، موصل قاعدة البيانات: mysql2 (Node.js)</li>
+                                <li><i class="fas fa-vial"></i> الاختبار: Postman و/أو صفحات واجهة مستخدم أساسية</li>
+                                <li><i class="fas fa-code"></i> بيئة التطوير: VS Code</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 5</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 5</div>
+                            <ol class="steps-list en-text">
+                                <li>Define Risk Logic (Simple & Explainable): Risk detection must remain preventive and educational, not diagnostic. The logic should be transparent and easy to justify during demo</li>
+                                <li>Risk Scoring Rules: Each health event contributes to total risk score: +2 points if condition is hereditary, +1 point if onset_age < 40, +1 point if severity level is High. Risk Level Classification: 0-2 points → Low, 3-4 points → Moderate, ≥5 points → High</li>
+                                <li>Backend API Endpoints: GET /alerts?user_id=... (Retrieves alert history for all family members belonging to user), POST /alerts/generate?family_member_id=... (Analyzes health events and generates new alert), PATCH /alerts/:id/resolve (Marks existing alert as Resolved)</li>
+                                <li>SQL Queries Requirement: 5 Basic Queries (Insert new alert, Select alerts for family member, Update alert status, Delete alert, Select active alerts), 5 Advanced Queries (Aggregate health events to compute risk score, Generate risk levels using CASE, Join FAMILY_MEMBER and ALERT, Analyze alert trends, Detect repeated hereditary conditions)</li>
+                                <li>Logging Integration: Each major alert action must be logged using Rose's shared logging utility: After generating alert: logAction(user_id, "ALERT_GENERATED", { family_member_id, risk_level }), After resolving alert: logAction(user_id, "ALERT_RESOLVED", { alert_id })</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تحديد منطق المخاطر (بسيط وواضح): يجب أن يبقى كشف المخاطر وقائيًا وتعليميًا، وليس تشخيصيًا. يجب أن يكون المنطق شفافًا وسهل التبرير أثناء العرض التوضيحي</li>
+                                <li>قواعد تسجيل المخاطر: يساهم كل حدث صحي في إجمالي درجة المخاطر: +2 نقطة إذا كانت الحالة وراثية، +1 نقطة إذا كان onset_age < 40، +1 نقطة إذا كان مستوى الشدة عالي. تصنيف مستوى المخاطر: 0-2 نقطة → منخفضة، 3-4 نقاط → متوسطة، ≥5 نقاط → عالية</li>
+                                <li>نقاط نهاية API الخلفية: GET /alerts?user_id=... (استرداد تاريخ التنبيه لجميع أعضاء الأسرة التابعين للمستخدم)، POST /alerts/generate?family_member_id=... (يحلل الأحداث الصحية وينشئ تنبيهًا جديدًا)، PATCH /alerts/:id/resolve (يضع علامة على التنبيه الموجود كتم الحل)</li>
+                                <li>متطلبات استعلامات SQL: 5 استعلامات أساسية (إدراج تنبيه جديد، تحديد التنبيهات لعضو الأسرة، تحديث حالة التنبيه، حذف التنبيه، تحديد التنبيهات النشطة)، 5 استعلامات متقدمة (تجميع الأحداث الصحية لحساب درجة المخاطر، إنشاء مستويات المخاطر باستخدام CASE، الانضمام إلى FAMILY_MEMBER و ALERT، تحليل اتجاهات التنبيه، اكتشاف الحالات الوراثية المتكررة)</li>
+                                <li>تكامل التسجيل: يجب تسجيل كل إجراء تنبيه رئيسي باستخدام أداة التسجيل المشتركة لروز: بعد إنشاء التنبيه: logAction(user_id, "ALERT_GENERATED", { family_member_id, risk_level })، بعد حل التنبيه: logAction(user_id, "ALERT_RESOLVED", { alert_id })</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yara Tab -->
+        <div class="tab-content" id="yara">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-calendar-check" style="color: var(--yara);"></i>
+                    <div>
+                        <div class="en-text">Yara - Appointments, Clinics & Awareness Module</div>
+                        <div class="ar-text arabic" style="display: none;">يارا - وحدة المواعيد والعيادات والتوعية</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="en-text">Clinic browsing, appointment booking, awareness content</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="ar-text arabic" style="display: none">تصفح العيادات، حجز المواعيد، محتوى التوعية</div>
+                    </div>
+                </div>
+                <div class="module-info">
+                    <div class="info-chip">
+                        <i class="fas fa-layer-group"></i>
+                        <span class="en-text">Phases 2-5</span>
+                        <span class="ar-text arabic" style="display: none">المراحل 2-5</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-database"></i>
+                        <span class="en-text">MySQL, Node.js</span>
+                    </div>
+                    <div class="info-chip">
+                        <i class="fas fa-user-check"></i>
+                        <span class="en-text">Depends on USER table</span>
+                        <span class="ar-text arabic" style="display: none">يعتمد على جدول USER</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Phase 2 Card -->
+                <div class="content-card" data-phase="2">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 2 - EER Diagram</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 2 - مخطط EER</div>
+                        <div class="phase-badge">Design</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Define CLINIC, APPOINTMENT, AWARENESS_CONTENT entities and relationships.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تحديد كيانات CLINIC و APPOINTMENT و AWARENESS_CONTENT والعلاقات.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> CLINIC: clinic_id PK, name, specialty, location</li>
+                            <li><i class="fas fa-check-circle"></i> APPOINTMENT: appointment_id PK, user_id FK, clinic_id FK</li>
+                            <li><i class="fas fa-check-circle"></i> AWARENESS_CONTENT: content_id PK, topic, description</li>
+                            <li><i class="fas fa-check-circle"></i> Relationships: USER→APPOINTMENT, CLINIC→APPOINTMENT</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> CLINIC: clinic_id PK, name, specialty, location</li>
+                            <li><i class="fas fa-check-circle"></i> APPOINTMENT: appointment_id PK, user_id FK, clinic_id FK</li>
+                            <li><i class="fas fa-check-circle"></i> AWARENESS_CONTENT: content_id PK, topic, description</li>
+                            <li><i class="fas fa-check-circle"></i> العلاقات: USER→APPOINTMENT, CLINIC→APPOINTMENT</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) / Lucidchart (EER diagram)</li>
+                                <li><i class="fas fa-file-alt"></i> Phase 1 reference (screens: Clinic Booking + Awareness Hub)</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-drafting-compass"></i> diagrams.net (draw.io) / Lucidchart (مخطط EER)</li>
+                                <li><i class="fas fa-file-alt"></i> مرجع المرحلة 1 (الشاشات: حجز العيادة + مركز التوعية)</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 2</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 2</div>
+                            <ol class="steps-list en-text">
+                                <li>Define entities: CLINIC: stores clinic details (name, specialty, location), APPOINTMENT: booking records, AWARENESS_CONTENT: educational content</li>
+                                <li>Define primary keys: CLINIC: clinic_id (PK), APPOINTMENT: appointment_id (PK), AWARENESS_CONTENT: content_id (PK)</li>
+                                <li>Add relationships + cardinality: USER (1) (M) APPOINTMENT (one user can book many appointments), CLINIC (1) (M) APPOINTMENT (one clinic can have many appointments), AWARENESS_CONTENT is standalone (no required relationship)</li>
+                                <li>Add constraints: APPOINTMENT must reference a valid USER and CLINIC (FK + total participation), Appointment status should be controlled values (e.g., Pending/Confirmed/Cancelled), Date/time must be mandatory</li>
+                                <li>Team checkpoint: One teammate confirms FK relationships match the global USER table, Another teammate confirms appointment workflow matches Phase 1 screens</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تحديد الكيانات: CLINIC: يخزن تفاصيل العيادة (الاسم، التخصص، الموقع)، APPOINTMENT: سجلات الحجز، AWARENESS_CONTENT: محتوى تعليمي</li>
+                                <li>تحديد المفاتيح الأساسية: CLINIC: clinic_id (PK)، APPOINTMENT: appointment_id (PK)، AWARENESS_CONTENT: content_id (PK)</li>
+                                <li>إضافة العلاقات + العلاقة العددية: USER (1) (M) APPOINTMENT (يمكن للمستخدم الواحد حجز مواعيد كثيرة)، CLINIC (1) (M) APPOINTMENT (يمكن للعيادة الواحدة أن يكون لديها مواعيد كثيرة)، AWARENESS_CONTENT قائمة بذاتها (لا توجد علاقة مطلوبة)</li>
+                                <li>إضافة القيود: يجب أن يشير APPOINTMENT إلى USER و CLINIC صالحين (FK + مشاركة كلية)، يجب أن تكون حالة الموعد قيمًا خاضعة للتحكم (مثل معلق/مؤكد/ملغي)، يجب أن يكون التاريخ/الوقت إلزاميًا</li>
+                                <li>نقطة تفتيش الفريق: يقوم زميل واحد بتأكيد مطابقة علاقات FK لجدول USER العالمي، يقوم زميل آخر بتأكيد مطابقة سير عمل المواعيد لشاشات المرحلة 1</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 Card -->
+                <div class="content-card" data-phase="3">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 3 - Relational Design</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 3 - التصميم العلائقي</div>
+                        <div class="phase-badge">Schema</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Map entities to relations, define foreign keys and constraints.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تعيين الكيانات إلى العلاقات، وتحديد المفاتيح الخارجية والقيود.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> CLINIC, APPOINTMENT, AWARENESS_CONTENT tables</li>
+                            <li><i class="fas fa-check-circle"></i> APPOINTMENT with user_id and clinic_id FKs</li>
+                            <li><i class="fas fa-check-circle"></i> Appointment time as DATETIME column</li>
+                            <li><i class="fas fa-check-circle"></i> Confirm USER.user_id type with Rose</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> جداول CLINIC و APPOINTMENT و AWARENESS_CONTENT</li>
+                            <li><i class="fas fa-check-circle"></i> APPOINTMENT مع user_id و clinic_id FKs</li>
+                            <li><i class="fas fa-check-circle"></i> وقت الموعد كعمود DATETIME</li>
+                            <li><i class="fas fa-check-circle"></i> تأكيد نوع USER.user_id مع روز</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-file-word"></i> Docs/Word for schema explanation</li>
+                                <li><i class="fas fa-project-diagram"></i> Optional: dbdiagram.io for relational diagram</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-file-word"></i> Docs/Word لشرح المخطط</li>
+                                <li><i class="fas fa-project-diagram"></i> اختياري: dbdiagram.io للمخطط العلائقي</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 3</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 3</div>
+                            <ol class="steps-list en-text">
+                                <li>Map entities to relations: CLINIC(clinic_id PK, name, specialty, location), APPOINTMENT(appointment_id PK, user_id FK, clinic_id FK, appointment_datetime, status, created_at), AWARENESS_CONTENT(content_id PK, topic, title, description, created_at)</li>
+                                <li>Decide appointment time design: Recommended: appointment_datetime as a single DATETIME column (cleaner than separate date/time)</li>
+                                <li>Define foreign keys: APPOINTMENT.user_id → USER.user_id, APPOINTMENT.clinic_id → CLINIC.clinic_id</li>
+                                <li>Write brief mapping justification: APPOINTMENT is the linking entity between USER and CLINIC, Awareness content is separate because it's informational and not transactional</li>
+                                <li>Integration alignment: Confirm with Rose the exact USER.user_id type (INT/UUID) so FK types match</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>تعيين الكيانات إلى العلاقات: CLINIC(clinic_id PK, name, specialty, location), APPOINTMENT(appointment_id PK, user_id FK, clinic_id FK, appointment_datetime, status, created_at), AWARENESS_CONTENT(content_id PK, topic, title, description, created_at)</li>
+                                <li>تحديد تصميم وقت الموعد: موصى به: appointment_datetime كعمود DATETIME واحد (أكثر نظافة من التاريخ/الوقت المنفصلين)</li>
+                                <li>تحديد المفاتيح الخارجية: APPOINTMENT.user_id → USER.user_id, APPOINTMENT.clinic_id → CLINIC.clinic_id</li>
+                                <li>كتابة تبرير تعيين موجز: APPOINTMENT هو الكيان الرابط بين USER و CLINIC، محتوى التوعية منفصل لأنه معلوماتي وليس معاملاتي</li>
+                                <li>محاذاة التكامل: تأكيد مع روز نوع USER.user_id الدقيق (INT/UUID) حتى تتطابق أنواع FK</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 4 Card -->
+                <div class="content-card" data-phase="4">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 4 - SQL Implementation</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 4 - تنفيذ SQL</div>
+                        <div class="phase-badge">Development</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Write CREATE TABLE statements, insert test data, and validate.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            كتابة عبارات CREATE TABLE، وإدخال بيانات الاختبار، والتحقق.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> Create CLINIC, APPOINTMENT, AWARENESS_CONTENT tables</li>
+                            <li><i class="fas fa-check-circle"></i> Add constraints (NOT NULL, UNIQUE, FK)</li>
+                            <li><i class="fas fa-check-circle"></i> Insert ≥10 clinics and ≥10-20 appointments</li>
+                            <li><i class="fas fa-check-circle"></i> Validate with non-existing IDs</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> إنشاء جداول CLINIC و APPOINTMENT و AWARENESS_CONTENT</li>
+                            <li><i class="fas fa-check-circle"></i> إضافة القيود (NOT NULL، UNIQUE، FK)</li>
+                            <li><i class="fas fa-check-circle"></i> إدراج ≥10 عيادات و ≥10-20 موعدًا</li>
+                            <li><i class="fas fa-check-circle"></i> التحقق مع معرفات غير موجودة</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fas fa-database"></i> MySQL Workbench or phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> SQL files in repo: schema.sql, seed.sql</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fas fa-database"></i> MySQL Workbench أو phpMyAdmin</li>
+                                <li><i class="fas fa-code"></i> ملفات SQL في المستودع: schema.sql, seed.sql</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 4</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 4</div>
+                            <ol class="steps-list en-text">
+                                <li>Write CREATE TABLE statements: Create CLINIC first, Create USER table reference must already exist (from Rose's module), Create APPOINTMENT with both foreign keys, Create AWARENESS_CONTENT</li>
+                                <li>Add constraints: status NOT NULL (use controlled values), appointment_datetime NOT NULL, clinic.name NOT NULL, Optional UNIQUE rule (team decision): prevent double booking per clinic/time: UNIQUE(clinic_id, appointment_datetime)</li>
+                                <li>Insert test data: ≥10 clinics (diverse specialties + locations), ≥10 - 20 appointments (different users/clinics/status), 10 awareness content items (topics: heart health, diabetes, nutrition, screening, genetics)</li>
+                                <li>Validation checks: Attempt appointment insert with non-existing clinic_id → should fail, Attempt appointment insert with non-existing user_id → should fail, Ensure seed data follows FK rules</li>
+                                <li>Export scripts: Provide team with module scripts + sample insert statements</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>كتابة عبارات CREATE TABLE: إنشاء CLINIC أولاً، يجب أن يكون مرجع جدول USER موجودًا بالفعل (من وحدة روز)، إنشاء APPOINTMENT مع كلا المفتاحين الخارجيين، إنشاء AWARENESS_CONTENT</li>
+                                <li>إضافة القيود: status NOT NULL (استخدم قيمًا خاضعة للتحكم)، appointment_datetime NOT NULL، clinic.name NOT NULL، قاعدة UNIQUE اختيارية (قرار الفريق): منع الحجز المزدوج لكل عيادة/وقت: UNIQUE(clinic_id, appointment_datetime)</li>
+                                <li>إدراج بيانات الاختبار: ≥10 عيادات (تخصصات + مواقع متنوعة)، ≥10 - 20 موعدًا (مستخدمين/عيادات/حالات مختلفة)، 10 عناصر محتوى توعية (مواضيع: صحة القلب، السكري، التغذية، الفحص، الوراثة)</li>
+                                <li>فحوصات التحقق: محاولة إدراج موعد مع clinic_id غير موجود → يجب أن يفشل، محاولة إدراج موعد مع user_id غير موجود → يجب أن يفشل، التأكد من اتباع بيانات البذرة لقواعد FK</li>
+                                <li>تصدير النصوص: تزويد الفريق بنصوص الوحدة + عبارات الإدراج النموذجية</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 5 Card -->
+                <div class="content-card" data-phase="5">
+                    <div class="card-header">
+                        <div class="card-title en-text">Phase 5 - Application & Queries</div>
+                        <div class="card-title ar-text arabic" style="display: none">المرحلة 5 - التطبيق والاستعلامات</div>
+                        <div class="phase-badge">Deployment</div>
+                    </div>
+                    <i class="fas fa-chevron-down expand-icon"></i>
+                    <div class="card-summary">
+                        <div class="card-content en-text">
+                            Implement backend endpoints, core workflow, and SQL queries.
+                        </div>
+                        <div class="card-content ar-text arabic" style="display: none">
+                            تنفيذ نقاط نهاية الخلفية، سير العمل الأساسي، واستعلامات SQL.
+                        </div>
+                        <ul class="card-list en-text">
+                            <li><i class="fas fa-check-circle"></i> GET /clinics, POST /appointments, GET /appointments, GET /awareness</li>
+                            <li><i class="fas fa-check-circle"></i> Core workflow: select clinic → choose date/time → insert appointment</li>
+                            <li><i class="fas fa-check-circle"></i> 5 basic + 5 advanced SQL queries</li>
+                            <li><i class="fas fa-check-circle"></i> Log integration with Rose's module</li>
+                        </ul>
+                        <ul class="card-list ar-text arabic" style="display: none">
+                            <li><i class="fas fa-check-circle"></i> GET /clinics, POST /appointments, GET /appointments, GET /awareness</li>
+                            <li><i class="fas fa-check-circle"></i> سير العمل الأساسي: تحديد العيادة → اختيار التاريخ/الوقت → إدراج الموعد</li>
+                            <li><i class="fas fa-check-circle"></i> 5 استعلامات أساسية + 5 متقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> تكامل السجل مع وحدة روز</li>
+                        </ul>
+                    </div>
+                    <div class="phase-details">
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-tools"></i> Tools Needed</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-tools"></i> الأدوات المطلوبة</div>
+                            <ul class="tools-list en-text">
+                                <li><i class="fab fa-node-js"></i> Backend: Node.js with Express.js</li>
+                                <li><i class="fas fa-database"></i> Database: MySQL, Database Connector: mysql2</li>
+                                <li><i class="fas fa-vial"></i> Testing: Postman and/or basic UI forms</li>
+                                <li><i class="fas fa-code"></i> Development Environment: VS Code</li>
+                            </ul>
+                            <ul class="tools-list ar-text arabic" style="display: none">
+                                <li><i class="fab fa-node-js"></i> الخلفية: Node.js مع Express.js</li>
+                                <li><i class="fas fa-database"></i> قاعدة البيانات: MySQL، موصل قاعدة البيانات: mysql2</li>
+                                <li><i class="fas fa-vial"></i> الاختبار: Postman و/أو نماذج واجهة مستخدم أساسية</li>
+                                <li><i class="fas fa-code"></i> بيئة التطوير: VS Code</li>
+                            </ul>
+                        </div>
+                        <div class="details-section">
+                            <div class="details-title en-text"><i class="fas fa-list-ol"></i> Steps to Complete Phase 5</div>
+                            <div class="details-title ar-text arabic" style="display: none"><i class="fas fa-list-ol"></i> خطوات إكمال المرحلة 5</div>
+                            <ol class="steps-list en-text">
+                                <li>Backend Endpoints (Minimum Required): Implement Express routes: GET /clinics (Retrieves list of available clinics), POST /appointments (Books new appointment for user), GET /appointments?user_id=... (Retrieves all appointments booked by specific user), PATCH /appointments/:id (Updates appointment status - Cancel / Confirm), GET /awareness (Retrieves health awareness content)</li>
+                                <li>Core Workflow: 1. User selects a clinic, 2. User chooses an available date and time, 3. Application inserts a new row into the APPOINTMENT table, 4. User can view appointment status (Pending / Confirmed / Cancelled). This workflow directly maps to the Clinic Booking and Awareness Hub screens defined in Phase 1</li>
+                                <li>SQL Queries Requirement (CS340): 5 Basic Queries (Insert new appointment, Select all clinics, Select appointments for specific user, Update appointment status, Select all awareness content), 5 Advanced Queries (Join appointments with clinic details, Filter appointments by date range, Count appointments per clinic, List clinics with zero appointments, Identify most booked clinic specialties)</li>
+                                <li>Logging Integration (With User & Access Control Module): After booking or canceling an appointment, log the action using Rose's shared helper function: logAction(user_id, "BOOK_APPOINTMENT", { clinic_id, Appointment_datetime })</li>
+                                <li>Summary: This phase demonstrates CRUD operations through Node.js backend, relational joins and aggregation queries, proper handling of transactional data (appointments), and clean integration with authentication and logging modules</li>
+                            </ol>
+                            <ol class="steps-list ar-text arabic" style="display: none">
+                                <li>نقاط نهاية الخلفية (الحد الأدنى المطلوب): تنفيذ مسارات Express: GET /clinics (استرداد قائمة العيادات المتاحة)، POST /appointments (يحجز موعدًا جديدًا للمستخدم)، GET /appointments?user_id=... (استرداد جميع المواعيد المحجوزة من قبل مستخدم معين)، PATCH /appointments/:id (تحديث حالة الموعد - إلغاء / تأكيد)، GET /awareness (استرداد محتوى التوعية الصحية)</li>
+                                <li>سير العمل الأساسي: 1. يختار المستخدم عيادة، 2. يختار المستخدم تاريخ ووقت متاحين، 3. يقوم التطبيق بإدراج صف جديد في جدول APPOINTMENT، 4. يمكن للمستخدم عرض حالة الموعد (معلق / مؤكد / ملغي). يعكس سير العمل هذا مباشرة شاشات حجز العيادة ومركز التوعية المحددة في المرحلة 1</li>
+                                <li>متطلبات استعلامات SQL (CS340): 5 استعلامات أساسية (إدراج موعد جديد، تحديد جميع العيادات، تحديد المواعيد لمستخدم معين، تحديث حالة الموعد، تحديد كل محتوى التوعية)، 5 استعلامات متقدمة (الانضمام بالمواعيد مع تفاصيل العيادة، تصفية المواعيد بنطاق تاريخ، عد المواعيد لكل عيادة، قائمة العيادات التي ليس لديها مواعيد، تحديد تخصصات العيادات الأكثر حجزًا)</li>
+                                <li>تكامل التسجيل (مع وحدة التحكم بالمستخدمين والوصول): بعد حجز أو إلغاء موعد، سجل الإجراء باستخدام وظيفة المساعدة المشتركة لروز: logAction(user_id, "BOOK_APPOINTMENT", { clinic_id, Appointment_datetime })</li>
+                                <li>الملخص: توضح هذه المرحلة عمليات CRUD عبر خلفية Node.js، واستعلامات الانضمام والتجميع العلائقية، والتعامل المناسب مع البيانات المعاملاتية (المواعيد)، والتكامل النظيف مع وحدات المصادقة والتسجيل</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shared Work Tab - FIXED with all collaboration points -->
+        <div class="tab-content" id="shared">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-users" style="color: var(--shared);"></i>
+                    <div>
+                        <div class="en-text">Shared Work & Collaboration</div>
+                        <div class="ar-text arabic" style="display: none;">العمل المشترك والتعاون</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="en-text">Tasks to be done together and dependencies</div>
+                        <div style="font-size: 16px; color: var(--text-light); margin-top: 5px;" class="ar-text arabic" style="display: none">المهام التي يجب القيام بها معًا والتبعيات</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="shared-grid">
+                <!-- Zero Blocking Strategy -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-bolt"></i> Zero Blocking Strategy</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-bolt"></i> استراتيجية عدم العرقلة</div>
+                    <div class="note-content en-text">
+                        The project uses a dependency-free strategy where each member owns a self-contained feature module that appears in all phases. The only shared agreement is on primary key names (e.g., user_id, family_member_id). No shared table ownership.
+                    </div>
+                    <div class="note-content ar-text arabic" style="display: none">
+                        يستخدم المشروع استراتيجية خالية من التبعيات حيث يمتلك كل عضو وحدة ميزة مستقلة تظهر في جميع المراحل. الاتفاق الوحيد المشترك هو على أسماء المفاتيح الأساسية (مثل user_id، family_member_id). لا يوجد ملكية مشتركة للجدول.
+                    </div>
+                </div>
+                
+                <!-- Fixed Shared Skeleton -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-sitemap"></i> Fixed Shared Skeleton</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-sitemap"></i> الهيكل المشترك الثابت</div>
+                    <div class="note-content en-text">
+                        From Phase 1, the global entities are locked: USER, FAMILY_MEMBER, HEALTH_EVENT, ALERT, APPOINTMENT, CLINIC, AWARENESS_CONTENT, AUDIT_LOG. These names cannot be changed by anyone.
+                    </div>
+                    <div class="note-content ar-text arabic" style="display: none">
+                        من المرحلة 1، الكيانات العالمية مغلقة: USER، FAMILY_MEMBER، HEALTH_EVENT، ALERT، APPOINTMENT، CLINIC، AWARENESS_CONTENT، AUDIT_LOG. لا يمكن لأحد تغيير هذه الأسماء.
+                    </div>
+                </div>
+                
+                <!-- Rose's Collaboration Points -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-user-shield" style="color: var(--rose);"></i> Rose's Collaboration Points</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-user-shield" style="color: var(--rose);"></i> نقاط تعاون روز</div>
+                    <ul class="collab-list en-text">
+                        <li><i class="fas fa-question-circle"></i> <strong>Needs from team:</strong> Confirm role list: Citizen/Admin/HealthcareProvider, Confirm DBMS and naming convention</li>
+                        <li><i class="fas fa-handshake"></i> <strong>Team needs from Rose:</strong> Final USER schema (PK + data types), Shared helper: logAction(user_id, action, metadata)</li>
+                    </ul>
+                    <ul class="collab-list ar-text arabic" style="display: none">
+                        <li><i class="fas fa-question-circle"></i> <strong>احتياجات من الفريق:</strong> تأكيد قائمة الأدوار: مواطن/مسؤول/مزود رعاية صحية، تأكيد نظام إدارة قواعد البيانات واتفاقية التسمية</li>
+                        <li><i class="fas fa-handshake"></i> <strong>احتياجات الفريق من روز:</strong> مخطط USER النهائي (PK + أنواع البيانات)، مساعد مشترك: logAction(user_id, action, metadata)</li>
+                    </ul>
+                </div>
+                
+                <!-- Raghad's Collaboration Points -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-heartbeat" style="color: var(--raghad);"></i> Raghad's Collaboration Points</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-heartbeat" style="color: var(--raghad);"></i> نقاط تعاون رغد</div>
+                    <ul class="collab-list en-text">
+                        <li><i class="fas fa-question-circle"></i> <strong>Needs from team:</strong> Confirm USER.user_id naming with Rose, Confirm severity values match what Shoug expects for risk logic</li>
+                        <li><i class="fas fa-handshake"></i> <strong>Team needs from Raghad:</strong> Final table definitions + data types for FAMILY_MEMBER and HEALTH_EVENT, Query list labeled as Basic vs Advanced</li>
+                    </ul>
+                    <ul class="collab-list ar-text arabic" style="display: none">
+                        <li><i class="fas fa-question-circle"></i> <strong>احتياجات من الفريق:</strong> تأكيد تسمية USER.user_id مع روز، تأكيد مطابقة قيم severity لما يتوقعه شوق لمنطق المخاطر</li>
+                        <li><i class="fas fa-handshake"></i> <strong>احتياجات الفريق من رغد:</strong> تعريفات الجداول النهائية + أنواع البيانات لـ FAMILY_MEMBER و HEALTH_EVENT، قائمة الاستعلامات مصنفة كأساسية مقابل متقدمة</li>
+                    </ul>
+                </div>
+                
+                <!-- Shoug's Collaboration Points -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-exclamation-triangle" style="color: var(--shoug);"></i> Shoug's Collaboration Points</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-exclamation-triangle" style="color: var(--shoug);"></i> نقاط تعاون شوق</div>
+                    <ul class="collab-list en-text">
+                        <li><i class="fas fa-question-circle"></i> <strong>Needs from team:</strong> Confirm HEALTH_EVENT fields that exist: condition, onset_age, severity, is_hereditary, Confirm family_member_id naming</li>
+                        <li><i class="fas fa-handshake"></i> <strong>Team needs from Shoug:</strong> Final ALERT schema + data types, Risk scoring rules (short paragraph) for documentation, Query list marked Basic vs Advanced</li>
+                    </ul>
+                    <ul class="collab-list ar-text arabic" style="display: none">
+                        <li><i class="fas fa-question-circle"></i> <strong>احتياجات من الفريق:</strong> تأكيد حقول HEALTH_EVENT الموجودة: الحالة، onset_age، الشدة، is_hereditary، تأكيد تسمية family_member_id</li>
+                        <li><i class="fas fa-handshake"></i> <strong>احتياجات الفريق من شوق:</strong> مخطط ALERT النهائي + أنواع البيانات، قواعد تسجيل المخاطر (فقرة قصيرة) للتوثيق، قائمة الاستعلامات مصنفة كأساسية مقابل متقدمة</li>
+                    </ul>
+                </div>
+                
+                <!-- Yara's Collaboration Points -->
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-calendar-check" style="color: var(--yara);"></i> Yara's Collaboration Points</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-calendar-check" style="color: var(--yara);"></i> نقاط تعاون يارا</div>
+                    <ul class="collab-list en-text">
+                        <li><i class="fas fa-question-circle"></i> <strong>Needs from team:</strong> Confirm USER.user_id format (INT vs UUID) with Rose, Confirm agreed status values (e.g., Pending/Confirmed/Cancelled)</li>
+                        <li><i class="fas fa-handshake"></i> <strong>Team needs from Yara:</strong> Final table definitions + data types for CLINIC/APPOINTMENT/AWARENESS_CONTENT, Query list labeled as Basic vs Advanced</li>
+                    </ul>
+                    <ul class="collab-list ar-text arabic" style="display: none">
+                        <li><i class="fas fa-question-circle"></i> <strong>احتياجات من الفريق:</strong> تأكيد تنسيق USER.user_id (INT مقابل UUID) مع روز، تأكيد قيم الحالة المتفق عليها (مثل معلق/مؤكد/ملغي)</li>
+                        <li><i class="fas fa-handshake"></i> <strong>احتياجات الفريق من يارا:</strong> تعريفات الجداول النهائية + أنواع البيانات لـ CLINIC/APPOINTMENT/AWARENESS_CONTENT، قائمة الاستعلامات مصنفة كأساسية مقابل متقدمة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Tab -->
+        <div class="tab-content" id="notes">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-sticky-note" style="color: var(--notes);"></i>
+                    <div>
+                        <div class="en-text">Project Notes & Important Points</div>
+                        <div class="ar-text arabic" style="display: none;">ملاحظات المشروع والنقاط المهمة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-container">
+                <div class="note-card">
+                    <div class="note-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span class="en-text">Important: Zero Blocking Strategy</span>
+                        <span class="ar-text arabic" style="display: none">مهم: استراتيجية عدم العرقلة</span>
+                    </div>
+                    <div class="note-content en-text">
+                        All work can happen in parallel because each phase is designed to be independent.<br><br>
+                        • <strong>Phase 2:</strong> Each member draws their own EER fragment.<br>
+                        • <strong>Phase 3:</strong> Tables reference only agreed PK names.<br>
+                        • <strong>Phase 4:</strong> SQL scripts are separate.<br>
+                        • <strong>Phase 5:</strong> Queries operate on owned tables.<br><br>
+                        This ensures no one is blocked waiting for others to complete their work.
+                    </div>
+                    <div class="note-content ar-text arabic" style="display: none">
+                        يمكن أن يحدث كل العمل بالتوازي لأن كل مرحلة مصممة لتكون مستقلة.<br><br>
+                        • <strong>المرحلة 2:</strong> يرسم كل عضو جزء EER الخاص به.<br>
+                        • <strong>المرحلة 3:</strong> الجداول تشير فقط إلى أسماء PK المتفق عليها.<br>
+                        • <strong>المرحلة 4:</strong> نصوص SQL منفصلة.<br>
+                        • <strong>المرحلة 5:</strong> تعمل الاستعلامات على الجداول المملوكة.<br><br>
+                        وهذا يضمن عدم توقف أي شخص في انتظار الآخرين لإكمال عملهم.
+                    </div>
+                </div>
+                
+                <div class="note-card">
+                    <div class="note-title">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span class="en-text">Individual Contribution Statement</span>
+                        <span class="ar-text arabic" style="display: none">بيان المساهمة الفردية</span>
+                    </div>
+                    <div class="note-content en-text">
+                        Each member can write: "I independently designed and implemented the [Module Name], including conceptual modeling, relational mapping, SQL implementation, and application-level queries."<br><br>
+                        This is exactly what instructors want to see - clear individual contributions that demonstrate full understanding of the entire development process from design to implementation.
+                    </div>
+                    <div class="note-content ar-text arabic" style="display: none">
+                        يمكن لكل عضو أن يكتب: "لقد صممت ونفذت بشكل مستقل [اسم الوحدة]، بما في ذلك النمذجة المفاهيمية، والتعيين العلائقي، وتنفيذ SQL، واستعلامات مستوى التطبيق."<br><br>
+                        هذا بالضبط ما يريد المدربون رؤيته - مساهمات فردية واضحة تظهر الفهم الكامل لعملية التطوير بأكملها من التصميم إلى التنفيذ.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Tab -->
+        <div class="tab-content" id="tools">
+            <div class="tab-header">
+                <div class="tab-title">
+                    <i class="fas fa-tools" style="color: var(--tools);"></i>
+                    <div>
+                        <div class="en-text">Required Tools & Software</div>
+                        <div class="ar-text arabic" style="display: none;">الأدوات والبرامج المطلوبة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="shared-grid">
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-database"></i> Database Tools</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-database"></i> أدوات قاعدة البيانات</div>
+                    <ul class="collab-list">
+                        <li><i class="fas fa-database"></i> <strong>MySQL Database</strong> - Primary DBMS for the project, used by all modules</li>
+                        <li><i class="fas fa-server"></i> <strong>MySQL Workbench / phpMyAdmin</strong> - Database management tools for SQL implementation</li>
+                    </ul>
+                </div>
+                
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fab fa-node-js"></i> Backend Development</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fab fa-node-js"></i> تطوير الخلفية</div>
+                    <ul class="collab-list">
+                        <li><i class="fab fa-node-js"></i> <strong>Node.js + Express</strong> - Backend framework for implementing API endpoints</li>
+                        <li><i class="fas fa-code"></i> <strong>VS Code</strong> - Primary code editor for development</li>
+                        <li><i class="fas fa-vial"></i> <strong>Postman</strong> - API testing tool for backend endpoints</li>
+                    </ul>
+                </div>
+                
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-drafting-compass"></i> Design & Diagramming</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-drafting-compass"></i> التصميم وإنشاء المخططات</div>
+                    <ul class="collab-list">
+                        <li><i class="fas fa-drafting-compass"></i> <strong>Diagrams.net / Lucidchart</strong> - For creating EER diagrams in Phase 2</li>
+                        <li><i class="fas fa-project-diagram"></i> <strong>dbdiagram.io</strong> - Optional tool for visual relational schemas</li>
+                    </ul>
+                </div>
+                
+                <div class="collaboration-section">
+                    <div class="collab-title en-text"><i class="fas fa-file-alt"></i> Documentation</div>
+                    <div class="collab-title ar-text arabic" style="display: none"><i class="fas fa-file-alt"></i> التوثيق</div>
+                    <ul class="collab-list">
+                        <li><i class="fas fa-file-word"></i> <strong>Google Docs / Word</strong> - For writing schema explanations and documentation</li>
+                        <li><i class="fas fa-file-code"></i> <strong>SQL files</strong> - schema.sql, seed.sql for database scripts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark mode toggle -->
+        <button class="dark-mode-toggle" id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Show active tab content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Language switching
+            const langEnBtn = document.getElementById('lang-en');
+            const langArBtn = document.getElementById('lang-ar');
+            const enTexts = document.querySelectorAll('.en-text');
+            const arTexts = document.querySelectorAll('.ar-text');
+            
+            langEnBtn.addEventListener('click', () => {
+                langEnBtn.classList.add('active');
+                langArBtn.classList.remove('active');
+                
+                enTexts.forEach(text => text.style.display = '');
+                arTexts.forEach(text => text.style.display = 'none');
+                
+                // Update body direction
+                document.body.classList.remove('arabic');
+                document.body.style.direction = 'ltr';
+                document.body.style.textAlign = 'left';
+            });
+            
+            langArBtn.addEventListener('click', () => {
+                langArBtn.classList.add('active');
+                langEnBtn.classList.remove('active');
+                
+                enTexts.forEach(text => text.style.display = 'none');
+                arTexts.forEach(text => text.style.display = '');
+                
+                // Update body direction
+                document.body.classList.add('arabic');
+                document.body.style.direction = 'rtl';
+                document.body.style.textAlign = 'right';
+            });
+            
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme or use OS preference
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            });
+            
+            // Phase card expansion functionality
+            const phaseCards = document.querySelectorAll('.content-card[data-phase]');
+            const expandIcons = document.querySelectorAll('.expand-icon');
+            
+            // Function to close all expanded cards
+            function closeAllExpandedCards() {
+                phaseCards.forEach(card => {
+                    card.classList.remove('expanded');
+                });
+            }
+            
+            // Add click event to expand icons
+            expandIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const card = this.closest('.content-card');
+                    const isExpanded = card.classList.contains('expanded');
+                    
+                    // Close all cards first
+                    closeAllExpandedCards();
+                    
+                    // If it wasn't expanded, expand it
+                    if (!isExpanded) {
+                        card.classList.add('expanded');
+                    }
+                });
+            });
+            
+            // Add click event to cards (but not to buttons/links inside)
+            phaseCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on expand icon (already handled)
+                    if (e.target.classList.contains('expand-icon') || e.target.closest('.expand-icon')) {
+                        return;
+                    }
+                    
+                    // Don't trigger if clicking on a link or button inside
+                    if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || 
+                        e.target.closest('a') || e.target.closest('button')) {
+                        return;
+                    }
+                    
+                    const isExpanded = this.classList.contains('expanded');
+                    
+                    // Close all cards first
+                    closeAllExpandedCards();
+                    
+                    // If it wasn't expanded, expand it
+                    if (!isExpanded) {
+                        this.classList.add('expanded');
+                    }
+                });
+            });
+            
+            // Close expanded card when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.content-card')) {
+                    closeAllExpandedCards();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
