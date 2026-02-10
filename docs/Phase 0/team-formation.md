@@ -2,14 +2,14 @@
 
 ## Team
 - **Shoug Alomran**
-- **Yara Faihan**
-- **Rose Rakan**
+- **Yara Albugami**
+- **Rose AlRakan**
 - **Raghad Abdulaziz**
 
 ## Communication
 - **Primary communication channel:** WhatsApp group for quick coordination and updates  
 - **Secondary tools:** GitHub (version control and documentation), Google Docs (collaborative drafting)  
-- **Meeting schedule:** Weekly coordination meetings, with additional meetings scheduled as needed during major project milestones  
+- **Meeting schedule:** Weekly coordination meetings, with additionl meetings scheduled as needed during major project milestones  
 
 ## Roles (Project Plan Dashboard)
 Detailed responsibilities are maintained in the interactive dashboard:
