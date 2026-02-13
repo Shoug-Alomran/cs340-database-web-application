@@ -26,7 +26,7 @@ Detailed responsibilities are maintained in the interactive dashboard:
 - **Shoug Alomran — Risk Alerts & Analysis Module**  
   Risk rule logic, alerts generation, aggregation/analysis ownership.
 
-- **Yara Faihan — Appointments, Clinics & Awareness Module**  
+- **Yara Albugami — Appointments, Clinics & Awareness Module**  
   Clinic browsing, appointment booking, and awareness content ownership.
 
 > The dashboard contains phase-by-phase tasks per member (Phase 2–5) and is the source of truth.
