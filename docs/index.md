@@ -15,6 +15,7 @@ Welcome to our CS 340 course project documentation.
 - Deployment: **https://database.shoug-tech.com**
 
 ## Team
-- Shoug Alomran
-- Yara Albugami
-- Rose Rakan
+- **Shoug Alomran**
+- **Yara Albugami**
+- **Rose Rakan**
+- **Raghad Abdulaziz**
