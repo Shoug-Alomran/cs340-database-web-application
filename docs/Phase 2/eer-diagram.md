@@ -47,6 +47,12 @@ Key relationships in the system include:
 - **AwarenessContent** is independent but accessible to users
 
 ---
+## EER Diagrams
+
+**Risk Alerts & Analysis EER Diagram:** [Open the Diagram](./Alert eer.html)
+
+
+---
 
 ## EER Diagram Status
 The EER diagram visually representing these entities and relationships is being finalized.
