@@ -16,5 +16,5 @@ Welcome to our CS 340 course project documentation.
 
 ## Team
 - Shoug Alomran
-- Yara Faihan
+- Yara Albugami
 - Rose Rakan
