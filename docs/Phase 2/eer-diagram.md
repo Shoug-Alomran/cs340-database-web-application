@@ -47,6 +47,7 @@ Key relationships in the system include:
 - **AwarenessContent** is independent but accessible to users
 
 ---
+
 ## EER Diagrams
 
 - **Risk Alerts & Analysis EER Diagram:** [Open the Diagram](./Alert eer.html)
@@ -54,22 +55,4 @@ Key relationships in the system include:
 - **Family & Medical History EER Diagram** [Open the Diagram](./Family & Medical History eer.html)
 - **Appointments, Clinics & Awareness EER Diagram** [Open the Diagram](./Appointments, Clinics & Awareness.html)
 
-
-
 ---
-
-## EER Diagram Status
-The EER diagram visually representing these entities and relationships is being finalized.
-
-> **Note:**  
-> The final EER diagram will include:
-
-> - Primary key attributes
-
-> - Relationship cardinalities (1:1, 1:N, M:N)
-
-> - Participation constraints
-
-> - Any specialization or weak entities (if applicable)
-
-The completed diagram will be used directly to derive the relational schema in **Phase 3 – Logical Design**.
