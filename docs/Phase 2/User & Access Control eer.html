@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phase 2 - User/Role + Audit Log (EER)</title>
+  <title>Healthcare Appointment System</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{
       font-family:"Times New Roman",serif;
-      background:#f5f5f5;
+      background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height:100vh;
       display:flex;
       justify-content:center;
@@ -33,25 +33,25 @@
 
     svg{width:100%;height:auto;display:block}
 
-    .entity{fill:#fff;stroke:#000;stroke-width:2}
-    .relationship{fill:#fff;stroke:#000;stroke-width:2}
-    .attribute{fill:#fff;stroke:#000;stroke-width:1.5}
+    .entity{fill:#4a90e2;stroke:#2c5aa0;stroke-width:2}
+    .relationship{fill:#50c878;stroke:#2d7a4f;stroke-width:2}
+    .attribute{fill:#ffd700;stroke:#cc9900;stroke-width:1.5}
 
-    .line{stroke:#000;stroke-width:1.5;fill:none}
-    .double-line{stroke:#000;stroke-width:1.5;fill:none}
+    .line{stroke:#5a5a5a;stroke-width:1.5;fill:none}
+    .double-line{stroke:#e74c3c;stroke-width:1.5;fill:none}
 
-    .entity-text{font-size:16px;font-weight:bold;fill:#000}
-    .relationship-text{font-size:14px;fill:#000;text-transform:uppercase}
+    .entity-text{font-size:16px;font-weight:bold;fill:#fff}
+    .relationship-text{font-size:14px;fill:#fff;text-transform:uppercase}
     .attribute-text{font-size:13px;fill:#000}
     .underline{text-decoration:underline;font-weight:bold}
-    .cardinality-text{font-size:15px;font-weight:bold;fill:#000}
+    .cardinality-text{font-size:15px;font-weight:bold;fill:#e74c3c}
     .small{font-size:12px;fill:#444;font-style:italic}
 
     /* weak entity / identifying rel / partial key */
-    .weak-entity-outer{fill:#fff;stroke:#000;stroke-width:2}
-    .weak-entity-inner{fill:none;stroke:#000;stroke-width:2}
-    .weak-rel-outer{fill:#fff;stroke:#000;stroke-width:2}
-    .weak-rel-inner{fill:none;stroke:#000;stroke-width:2}
+    .weak-entity-outer{fill:#9b59b6;stroke:#6c3483;stroke-width:2}
+    .weak-entity-inner{fill:none;stroke:#6c3483;stroke-width:2}
+    .weak-rel-outer{fill:#e67e22;stroke:#d35400;stroke-width:2}
+    .weak-rel-inner{fill:none;stroke:#d35400;stroke-width:2}
     .partial-underline{stroke:#000;stroke-width:1.2;stroke-dasharray:4 3}
   </style>
 </head>
@@ -115,8 +115,8 @@
     <line x1="800" y1="310" x2="1120" y2="185" class="line"/>
 
     <!-- ================== ROLE SPECIALIZATION (DISJOINT + TOTAL) ================== -->
-    <circle cx="1235" cy="285" r="18" fill="#fff" stroke="#000" stroke-width="2"/>
-    <text x="1235" y="291" text-anchor="middle" style="font-size:14px;font-weight:bold;">d</text>
+    <circle cx="1235" cy="285" r="18" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+    <text x="1235" y="291" text-anchor="middle" style="font-size:14px;font-weight:bold;fill:#fff;">d</text>
 
     <line x1="1235" y1="220" x2="1235" y2="267" class="line"/>
     <line x1="1241" y1="220" x2="1241" y2="267" class="double-line"/>

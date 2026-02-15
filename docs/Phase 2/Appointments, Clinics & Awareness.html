@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phase 2 - Chen EER Diagram</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body{
+      font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+      background: linear-gradient(135deg,#1e3c72 0%, #2a5298 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* Full screen usage (big white box) */
+    .container{
+      width: min(98vw, 1900px);
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    h1 { color:#1e3c72; margin-bottom:10px; font-size:28px; }
+    .subtitle { color:#666; margin-bottom:22px; font-size:16px; }
+
+    .diagram-wrap{
+      width: 100%;
+      overflow-x: auto;   /* never shrink into overlaps on smaller screens */
+      border-radius: 8px;
+    }
+
+    svg{
+      width: 100%;
+      height: auto;
+      min-height: 720px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fafafa;
+      display: block;
+    }
+
+    /* Entity styles */
+    .entity{ cursor:pointer; transition: all .3s ease; }
+    .entity:hover rect{ fill:#e3f2fd; stroke-width:3; }
+    .entity rect{ fill:#fff; stroke:#1e88e5; stroke-width:2; }
+    .entity text{ fill:#1565c0; font-weight:bold; font-size:14px; }
+
+    /* Relationship styles */
+    .relationship{ cursor:pointer; transition: all .3s ease; }
+    .relationship:hover polygon{ fill:#fff3e0; stroke-width:3; }
+    .relationship polygon{ fill:#fff; stroke:#fb8c00; stroke-width:2; }
+    .relationship text{ fill:#e65100; font-weight:bold; font-size:13px; }
+
+    /* Attribute styles */
+    .attribute ellipse{ fill:#fff; stroke:#43a047; stroke-width:1.5; }
+    .attribute.primary-key ellipse{ stroke:#d32f2f; stroke-width:2; }
+    .attribute text{ fill:#2e7d32; font-size:11px; }
+    .attribute.primary-key text{ font-weight:bold; text-decoration:underline; }
+
+    line, polyline, path{ stroke:#666; stroke-width:1.5; fill:none; }
+
+    /* Cardinality: always readable, never looks "under a line" */
+    .cardinality{
+      font-size: 16px;
+      font-weight: bold;
+      fill: #d32f2f;
+      paint-order: stroke;
+      stroke: #fafafa;      /* matches svg background */
+      stroke-width: 6px;    /* masks any line behind */
+      stroke-linejoin: round;
+    }
+
+    /* Legend */
+    .legend{
+      margin-top: 18px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .legend-item{ display:flex; align-items:center; gap:8px; }
+    .legend-box{ width:40px; height:25px; border:2px solid; border-radius:3px; background:#fff; }
+    .legend-diamond{ width:30px; height:30px; background:#fff; border:2px solid #fb8c00; transform: rotate(45deg); }
+    .legend-circle{ width:25px; height:25px; border:2px solid #43a047; border-radius:50%; background:#fff; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Healthcare Appointment System</h1>
+    <p class="subtitle">CLINIC, APPOINTMENT, AWARENESS_CONTENT Entities</p>
+
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 2000 900" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ===================== ENTITIES ===================== -->
+
+        <!-- CLINIC (moved down a bit) -->
+        <g class="entity">
+          <rect x="880" y="100" width="260" height="86" rx="6"/>
+          <text x="1010" y="152" text-anchor="middle">CLINIC</text>
+        </g>
+
+        <!-- USER -->
+        <g class="entity">
+          <rect x="140" y="360" width="280" height="86" rx="6"/>
+          <text x="280" y="412" text-anchor="middle">USER</text>
+        </g>
+
+        <!-- APPOINTMENT -->
+        <g class="entity">
+          <rect x="1380" y="360" width="320" height="86" rx="6"/>
+          <text x="1540" y="412" text-anchor="middle">APPOINTMENT</text>
+        </g>
+
+        <!-- AWARENESS_CONTENT -->
+        <g class="entity">
+          <rect x="830" y="740" width="360" height="86" rx="6"/>
+          <text x="1010" y="792" text-anchor="middle">AWARENESS_CONTENT</text>
+        </g>
+
+        <!-- ===================== RELATIONSHIPS ===================== -->
+
+        <!-- HAS -->
+        <g class="relationship">
+          <polygon points="1260,250 1325,200 1390,250 1325,300"/>
+          <text x="1325" y="255" text-anchor="middle">HAS</text>
+        </g>
+
+        <!-- BOOKS -->
+        <g class="relationship">
+          <polygon points="860,410 925,360 990,410 925,460"/>
+          <text x="925" y="415" text-anchor="middle">BOOKS</text>
+        </g>
+
+        <!-- ===================== CONNECTIONS + CARDINALITIES ===================== -->
+
+        <!-- USER -> BOOKS -->
+        <line x1="420" y1="403" x2="860" y2="410" stroke="#000" stroke-width="2"/>
+        <text x="520" y="388" class="cardinality">(0,N)</text>
+
+        <!-- BOOKS -> APPOINTMENT (double line for total participation) -->
+        <line x1="990" y1="410" x2="1380" y2="403" stroke="#000" stroke-width="2"/>
+        <line x1="990" y1="416" x2="1380" y2="409" stroke="#000" stroke-width="2"/>
+        <text x="1230" y="388" class="cardinality">(1,1)</text>
+
+        <!-- CLINIC -> HAS (adjusted because CLINIC moved down) -->
+        <line x1="1010" y1="186" x2="1260" y2="250" stroke="#000" stroke-width="2"/>
+        <text x="1075" y="225" class="cardinality">(0,N)</text>
+
+        <!-- HAS -> APPOINTMENT (double line) -->
+        <line x1="1390" y1="250" x2="1440" y2="360" stroke="#000" stroke-width="2"/>
+        <line x1="1380" y1="254" x2="1430" y2="364" stroke="#000" stroke-width="2"/>
+        <!-- moved OFF the lines -->
+        <text x="1465" y="320" class="cardinality">(1,1)</text>
+
+        <!-- ===================== ATTRIBUTES ===================== -->
+
+        <!-- CLINIC attributes -->
+        <g class="attribute primary-key">
+          <ellipse cx="720" cy="75" rx="70" ry="24"/>
+          <text x="720" y="80" text-anchor="middle">clinic_id</text>
+        </g>
+        <!-- adjusted endpoint to new CLINIC position -->
+        <line x1="790" y1="78" x2="880" y2="142" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1010" cy="22" rx="55" ry="24"/>
+          <text x="1010" y="27" text-anchor="middle">name</text>
+        </g>
+        <!-- connect down to new CLINIC top -->
+        <line x1="1010" y1="46" x2="1010" y2="100" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1205" cy="80" rx="70" ry="24"/>
+          <text x="1205" y="85" text-anchor="middle">specialty</text>
+        </g>
+        <line x1="1140" y1="90" x2="1140" y2="140" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1205" cy="140" rx="65" ry="24"/>
+          <text x="1205" y="145" text-anchor="middle">location</text>
+        </g>
+        <line x1="1140" y1="138" x2="1140" y2="166" stroke="#43a047" stroke-width="1.5"/>
+
+        <!-- APPOINTMENT attributes -->
+        <g class="attribute primary-key">
+          <ellipse cx="1830" cy="280" rx="95" ry="24"/>
+          <text x="1830" y="285" text-anchor="middle">appointment_id</text>
+        </g>
+        <line x1="1700" y1="360" x2="1760" y2="295" stroke="#d32f2f" stroke-width="2"/>
+
+        <g class="attribute">
+          <ellipse cx="1850" cy="395" rx="135" ry="32"/>
+          <text x="1850" y="392" text-anchor="middle">appointment_datetime</text>
+          <text x="1850" y="412" text-anchor="middle" font-size="10">(NOT NULL)</text>
+        </g>
+        <line x1="1700" y1="403" x2="1715" y2="398" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1850" cy="520" rx="140" ry="34"/>
+          <text x="1850" y="516" text-anchor="middle">status</text>
+          <text x="1850" y="534" text-anchor="middle" font-size="9">(Pending/Confirmed/Cancelled)</text>
+        </g>
+        <line x1="1700" y1="426" x2="1720" y2="500" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1500" cy="600" rx="85" ry="24"/>
+          <text x="1500" y="605" text-anchor="middle">user_id (FK)</text>
+        </g>
+        <line x1="1540" y1="446" x2="1510" y2="576" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1650" cy="650" rx="85" ry="24"/>
+          <text x="1650" y="655" text-anchor="middle">clinic_id (FK)</text>
+        </g>
+        <line x1="1600" y1="446" x2="1640" y2="626" stroke="#43a047" stroke-width="1.5"/>
+
+        <!-- AWARENESS_CONTENT attributes -->
+        <g class="attribute primary-key">
+          <ellipse cx="660" cy="782" rx="75" ry="24"/>
+          <text x="660" y="787" text-anchor="middle">content_id</text>
+        </g>
+        <line x1="735" y1="782" x2="830" y2="782" stroke="#d32f2f" stroke-width="2"/>
+
+        <!-- description moved slightly so connector line is visible -->
+        <g class="attribute">
+          <ellipse cx="1315" cy="770" rx="85" ry="24"/>
+          <text x="1315" y="775" text-anchor="middle">description</text>
+        </g>
+        <line x1="1190" y1="783" x2="1230" y2="770" stroke="#43a047" stroke-width="1.5"/>
+
+        <g class="attribute">
+          <ellipse cx="1010" cy="862" rx="55" ry="24"/>
+          <text x="1010" y="867" text-anchor="middle">topic</text>
+        </g>
+        <line x1="1010" y1="838" x2="1010" y2="826" stroke="#43a047" stroke-width="1.5"/>
+
+        <!-- Constraints box -->
+        <g>
+          <rect x="140" y="555" width="760" height="165" rx="6" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+          <text x="520" y="590" text-anchor="middle" fill="#c62828" font-size="14" font-weight="bold">Constraints</text>
+          <text x="170" y="620" fill="#333" font-size="12">• APPOINTMENT must reference valid USER and CLINIC (FK + total participation)</text>
+          <text x="170" y="645" fill="#333" font-size="12">• Total participation: Double lines indicate (1,1) - every appointment MUST have user and clinic</text>
+          <text x="170" y="670" fill="#333" font-size="12">• Status: controlled values (Pending/Confirmed/Cancelled)</text>
+          <text x="170" y="695" fill="#333" font-size="12">• appointment_datetime: mandatory field (NOT NULL)</text>
+        </g>
+
+      </svg>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-box" style="border-color:#1e88e5;"></div>
+        <span>Entity</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-diamond"></div>
+        <span>Relationship</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-circle"></div>
+        <span>Attribute</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-circle" style="border-color:#d32f2f; border-width:2px;"></div>
+        <span>Primary Key (underlined)</span>
+      </div>
+      <div class="legend-item">
+        <span style="font-weight:bold; color:#d32f2f; font-size:18px;">1, M</span>
+        <span>Cardinality</span>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; padding:15px; background:#e8f5e9; border-radius:8px; border-left:4px solid #43a047;">
+      <h3 style="color:#2e7d32; margin-bottom:10px;">Entity Descriptions</h3>
+      <p style="margin:5px 0;"><strong>CLINIC:</strong> Stores clinic details (name, specialty, location)</p>
+      <p style="margin:5px 0;"><strong>APPOINTMENT:</strong> Booking records linking users to clinics</p>
+      <p style="margin:5px 0;"><strong>AWARENESS_CONTENT:</strong> Educational content (standalone)</p>
+    </div>
+  </div>
+</body>
+</html>
