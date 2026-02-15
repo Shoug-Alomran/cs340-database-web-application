@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phase 2 - User/Role + Audit Log (EER)</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:"Times New Roman",serif;
+      background:#f5f5f5;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px 20px;
+    }
+    .container{
+      background:#fff;
+      border-radius:8px;
+      padding:40px;
+      box-shadow:0 4px 20px rgba(0,0,0,.1);
+      max-width:1750px;
+      width:100%;
+    }
+    .header{
+      text-align:center;
+      margin-bottom:28px;
+      border-bottom:2px solid #333;
+      padding-bottom:14px;
+    }
+    .header h1{font-size:28px;font-weight:bold}
+    .header p{color:#444;font-size:16px;font-style:italic}
+
+    svg{width:100%;height:auto;display:block}
+
+    .entity{fill:#fff;stroke:#000;stroke-width:2}
+    .relationship{fill:#fff;stroke:#000;stroke-width:2}
+    .attribute{fill:#fff;stroke:#000;stroke-width:1.5}
+
+    .line{stroke:#000;stroke-width:1.5;fill:none}
+    .double-line{stroke:#000;stroke-width:1.5;fill:none}
+
+    .entity-text{font-size:16px;font-weight:bold;fill:#000}
+    .relationship-text{font-size:14px;fill:#000;text-transform:uppercase}
+    .attribute-text{font-size:13px;fill:#000}
+    .underline{text-decoration:underline;font-weight:bold}
+    .cardinality-text{font-size:15px;font-weight:bold;fill:#000}
+    .small{font-size:12px;fill:#444;font-style:italic}
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+    <h1>User & Access Control System</h1>
+  </div>
+
+  <svg viewBox="0 0 1700 1200" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- ================== USER ENTITY (LEFT) ================== -->
+    <rect x="120" y="250" width="260" height="70" class="entity"/>
+    <text x="250" y="292" text-anchor="middle" class="entity-text">USER</text>
+
+    <!-- USER attributes -->
+    <ellipse cx="120" cy="160" rx="50" ry="18" class="attribute"/>
+    <text x="120" y="165" text-anchor="middle" class="attribute-text"><tspan class="underline">user_id</tspan></text>
+    <line x1="145" y1="175" x2="200" y2="250" class="line"/>
+
+    <ellipse cx="250" cy="145" rx="55" ry="18" class="attribute"/>
+    <text x="250" y="150" text-anchor="middle" class="attribute-text">email</text>
+    <line x1="250" y1="163" x2="250" y2="250" class="line"/>
+
+    <ellipse cx="390" cy="160" rx="60" ry="18" class="attribute"/>
+    <text x="390" y="165" text-anchor="middle" class="attribute-text">full_name</text>
+    <line x1="365" y1="175" x2="320" y2="250" class="line"/>
+
+    <ellipse cx="520" cy="230" rx="65" ry="18" class="attribute"/>
+    <text x="520" y="235" text-anchor="middle" class="attribute-text">password_hash</text>
+    <line x1="455" y1="230" x2="380" y2="285" class="line"/>
+
+
+    <!-- ================== ASSIGNED_TO RELATIONSHIP ================== -->
+    <polygon points="740,255 800,310 740,365 680,310" class="relationship"/>
+    <text x="740" y="305" text-anchor="middle" class="relationship-text">ASSIGNED</text>
+    <text x="740" y="323" text-anchor="middle" class="relationship-text">TO</text>
+
+    <!-- USER -> ASSIGNED_TO : TOTAL participation (double line) -->
+    <line x1="380" y1="285" x2="680" y2="310" class="line"/>
+    <line x1="380" y1="291" x2="680" y2="316" class="double-line"/>
+
+    <!-- min,max -->
+    <text x="515" y="276" class="cardinality-text">(1,1)</text>
+    <text x="945" y="292" class="cardinality-text">(0,N)</text>
+
+
+    <!-- ================== ROLE ENTITY (TOP RIGHT) ================== -->
+    <rect x="1120" y="150" width="230" height="70" class="entity"/>
+    <text x="1235" y="192" text-anchor="middle" class="entity-text">ROLE</text>
+
+    <ellipse cx="1120" cy="90" rx="50" ry="18" class="attribute"/>
+    <text x="1120" y="95" text-anchor="middle" class="attribute-text"><tspan class="underline">role_id</tspan></text>
+    <line x1="1145" y1="105" x2="1185" y2="150" class="line"/>
+
+    <ellipse cx="1350" cy="90" rx="55" ry="18" class="attribute"/>
+    <text x="1350" y="95" text-anchor="middle" class="attribute-text">role_name</text>
+    <line x1="1330" y1="105" x2="1290" y2="150" class="line"/>
+
+    <!-- ASSIGNED_TO -> ROLE -->
+    <line x1="800" y1="310" x2="1120" y2="185" class="line"/>
+
+
+    <!-- ================== ROLE SPECIALIZATION (DISJOINT + TOTAL) ================== -->
+    <circle cx="1235" cy="285" r="18" fill="#fff" stroke="#000" stroke-width="2"/>
+    <text x="1235" y="291" text-anchor="middle" style="font-size:14px;font-weight:bold;">d</text>
+
+    <!-- TOTAL specialization: double line from ROLE to circle -->
+    <line x1="1235" y1="220" x2="1235" y2="267" class="line"/>
+    <line x1="1241" y1="220" x2="1241" y2="267" class="double-line"/>
+
+    <!-- Subtypes -->
+    <rect x="980"  y="350" width="220" height="60" class="entity"/>
+    <text x="1090" y="385" text-anchor="middle" class="entity-text">PATIENT</text>
+
+    <rect x="1180" y="470" width="220" height="60" class="entity"/>
+    <text x="1290" y="505" text-anchor="middle" class="entity-text">DOCTOR</text>
+
+    <rect x="1365" y="350" width="220" height="60" class="entity"/>
+    <text x="1475" y="385" text-anchor="middle" class="entity-text">ADMIN</text>
+
+    <!-- specialization lines -->
+    <line x1="1225" y1="300" x2="1110" y2="350" class="line"/>
+    <line x1="1235" y1="303" x2="1290" y2="470" class="line"/>
+    <line x1="1245" y1="300" x2="1475" y2="350" class="line"/>
+
+
+    <!-- ================== PATIENT attributes ================== -->
+    <ellipse cx="900" cy="350" rx="55" ry="16" class="attribute"/>
+    <text x="900" y="354" text-anchor="middle" class="attribute-text">serial_no</text>
+    <line x1="955" y1="350" x2="980" y2="370" class="line"/>
+
+    <ellipse cx="900" cy="385" rx="45" ry="16" class="attribute"/>
+    <text x="900" y="389" text-anchor="middle" class="attribute-text">DOB</text>
+    <line x1="945" y1="385" x2="980" y2="385" class="line"/>
+
+    <ellipse cx="900" cy="420" rx="45" ry="16" class="attribute"/>
+    <text x="900" y="424" text-anchor="middle" class="attribute-text">gender</text>
+    <line x1="945" y1="420" x2="980" y2="400" class="line"/>
+
+    <ellipse cx="1080" cy="435" rx="70" ry="16" class="attribute"/>
+    <text x="1080" y="439" text-anchor="middle" class="attribute-text">consent_status</text>
+    <line x1="1080" y1="419" x2="1080" y2="410" class="line"/>
+
+
+    <!-- ================== DOCTOR attributes ================== -->
+    <ellipse cx="1120" cy="500" rx="55" ry="16" class="attribute"/>
+    <text x="1120" y="504" text-anchor="middle" class="attribute-text">serial_no</text>
+    <line x1="1175" y1="500" x2="1180" y2="500" class="line"/>
+
+    <ellipse cx="1480" cy="490" rx="60" ry="16" class="attribute"/>
+    <text x="1480" y="494" text-anchor="middle" class="attribute-text">clinic_name</text>
+    <line x1="1420" y1="490" x2="1400" y2="495" class="line"/>
+
+    <ellipse cx="1480" cy="525" rx="55" ry="16" class="attribute"/>
+    <text x="1480" y="529" text-anchor="middle" class="attribute-text">specialty</text>
+    <line x1="1425" y1="525" x2="1400" y2="510" class="line"/>
+
+    <ellipse cx="1290" cy="565" rx="55" ry="16" class="attribute"/>
+    <text x="1290" y="569" text-anchor="middle" class="attribute-text">license_no</text>
+    <line x1="1290" y1="549" x2="1290" y2="530" class="line"/>
+
+
+    <!-- ================== ADMIN attributes (serial_no RIGHT, others TOP) ================== -->
+
+    <!-- level (TOP CENTER) -->
+    <ellipse cx="1475" cy="300" rx="45" ry="16" class="attribute"/>
+    <text x="1475" y="304" text-anchor="middle" class="attribute-text">level</text>
+    <line x1="1475" y1="316" x2="1475" y2="350" class="line"/>
+
+    <!-- assigned_dept (TOP RIGHT) -->
+    <ellipse cx="1560" cy="310" rx="70" ry="16" class="attribute"/>
+    <text x="1560" y="314" text-anchor="middle" class="attribute-text">assigned_dept</text>
+    <line x1="1545" y1="326" x2="1545" y2="350" class="line"/>
+    <text x="1640" y="314" class="small">(optional)</text>
+
+    <!-- serial_no (RIGHT SIDE - moved from top) -->
+    <ellipse cx="1640" cy="385" rx="55" ry="16" class="attribute"/>
+    <text x="1640" y="389" text-anchor="middle" class="attribute-text">serial_no</text>
+    <line x1="1585" y1="385" x2="1600" y2="385" class="line"/>
+
+
+    <!-- ================== AUDIT_LOG ENTITY (BOTTOM RIGHT) ================== -->
+    <rect x="1040" y="735" width="260" height="70" class="entity"/>
+    <text x="1170" y="777" text-anchor="middle" class="entity-text">AUDIT_LOG</text>
+
+    <ellipse cx="1040" cy="680" rx="50" ry="18" class="attribute"/>
+    <text x="1040" y="685" text-anchor="middle" class="attribute-text"><tspan class="underline">log_id</tspan></text>
+    <line x1="1065" y1="695" x2="1100" y2="735" class="line"/>
+
+    <ellipse cx="1170" cy="665" rx="45" ry="18" class="attribute"/>
+    <text x="1170" y="670" text-anchor="middle" class="attribute-text">action</text>
+    <line x1="1170" y1="683" x2="1170" y2="735" class="line"/>
+
+    <ellipse cx="1300" cy="680" rx="55" ry="18" class="attribute"/>
+    <text x="1300" y="685" text-anchor="middle" class="attribute-text">timestamp</text>
+    <line x1="1275" y1="695" x2="1230" y2="735" class="line"/>
+
+
+    <!-- ================== GENERATES RELATIONSHIP ================== -->
+    <polygon points="680,690 740,745 680,800 620,745" class="relationship"/>
+    <text x="680" y="750" text-anchor="middle" class="relationship-text">GENERATES</text>
+
+    <!-- USER -> GENERATES -->
+    <polyline points="250,320 250,745 620,745" class="line"/>
+    <text x="265" y="600" class="cardinality-text">(0,N)</text>
+
+    <!-- GENERATES -> AUDIT_LOG (total on AUDIT_LOG side) -->
+    <text x="1005" y="735" class="cardinality-text">(1,1)</text>
+    <polyline points="740,745 900,730 1040,735" class="line"/>
+    <polyline points="740,751 900,736 1040,741" class="double-line"/>
+    <line x1="1028" y1="734" x2="1040" y2="735" class="line"/>
+    <line x1="1028" y1="740" x2="1040" y2="741" class="double-line"/>
+
+    <text x="860" y="720" class="cardinality-text">N</text>
+
+  </svg>
+</div>
+</body>
+</html>

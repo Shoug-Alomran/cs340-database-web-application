@@ -49,7 +49,9 @@ Key relationships in the system include:
 ---
 ## EER Diagrams
 
-**Risk Alerts & Analysis EER Diagram:** [Open the Diagram](./Alert eer.html)
+- **Risk Alerts & Analysis EER Diagram:** [Open the Diagram](./Alert eer.html)
+- **User & Access Control EER Diagram** [Open the Diagram](./User & Access Control eer.html)
+- **Family & Medical History** [Open the Diagram](./Family & Medical History eer.html)
 
 
 ---
