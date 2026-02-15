@@ -46,6 +46,7 @@ nav:
       - Requirements: Phase 1/requirements.md
       - System Architecture: Phase 1/architecture.md
       - UI Wireframes: Phase 1/ui-wireframes.md
+      - PDF Report: Phase 1/report.md
 
   - Phase 2 - Conceptual Design:
       - EER Diagram: Phase 2/eer-diagram.md
