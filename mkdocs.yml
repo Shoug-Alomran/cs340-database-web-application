@@ -51,6 +51,7 @@ nav:
   - Phase 2 - Conceptual Design:
       - EER Diagram: Phase 2/eer-diagram.md
       - Design Explanation: Phase 2/design-explanation.md
+      - PDF Report: Phase 2/report.md
 
   - Phase 3 - Logical Design:
       - Relational Schema: Phase 3/relational-schema.md
