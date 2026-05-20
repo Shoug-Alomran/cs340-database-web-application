@@ -6,6 +6,7 @@
 This section summarizes the logical integrity constraints carried into implementation.
 
 [Relational Schema](../relational-schema/){ .md-button .md-button--primary }
+[Normalization](../normalization/){ .md-button }
 [Assumptions](../assumptions/){ .md-button }
 
 </div>

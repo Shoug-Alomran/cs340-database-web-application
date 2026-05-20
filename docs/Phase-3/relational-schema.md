@@ -9,6 +9,7 @@ One-to-many (1:N) relationships are implemented using foreign keys on the N-side
 
 [Mapping Explanation](../mapping/){ .md-button .md-button--primary }
 [Data Dictionary](../data-dictionary/){ .md-button }
+[Normalization](../normalization/){ .md-button }
 [Download Phase 3 Report](/Phase-3/report.pdf){ .md-button }
 
 </div>

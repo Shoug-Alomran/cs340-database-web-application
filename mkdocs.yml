@@ -66,6 +66,7 @@ nav:
       - Relational Schema: Phase-3/relational-schema.md
       - Data Dictionary: Phase-3/data-dictionary.md
       - Mapping Explanation: Phase-3/mapping.md
+      - Normalization: Phase-3/normalization.md
       - Constraints: Phase-3/constraints.md
       - Assumptions: Phase-3/assumptions.md
       - Report: Phase-3/report.pdf

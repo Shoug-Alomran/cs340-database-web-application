@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://database.shoug-tech.com/Phase-5/frontend/">
+        <link rel="canonical" href="https://database.shoug-tech.com/Phase-3/normalization/">
       
       
-        <link rel="prev" href="../advanced-queries/">
+        <link rel="prev" href="../mapping/">
       
       
-        <link rel="next" href="../report.pdf">
+        <link rel="next" href="../constraints/">
       
       
       <link rel="icon" href="../../google.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Frontend Interface - CS 340 - Database Web Application</title>
+        <title>Normalization - CS 340 - Database Web Application</title>
       
     
     
@@ -64,16 +64,16 @@
   
   
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Frontend Interface | CS 340 - Database Web Application">
+  <meta property="og:title" content="Normalization | CS 340 - Database Web Application">
   <meta property="og:description" content="Academic documentation for the CS340 database web application project, covering planning, data modeling, implementation, and backend integration.">
-  <meta property="og:url" content="https://database.shoug-tech.com/Phase-5/frontend/">
+  <meta property="og:url" content="https://database.shoug-tech.com/Phase-3/normalization/">
   <meta property="og:site_name" content="CS 340 - Database Web Application">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Frontend Interface | CS 340 - Database Web Application">
+  <meta name="twitter:title" content="Normalization | CS 340 - Database Web Application">
   <meta name="twitter:description" content="Academic documentation for the CS340 database web application project, covering planning, data modeling, implementation, and backend integration.">
   
   <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "WebPage", "description": "Academic documentation for the CS340 database web application project, covering planning, data modeling, implementation, and backend integration.", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "CS 340 - Database Web Application", "url": "https://database.shoug-tech.com/"}, "name": "Frontend Interface | CS 340 - Database Web Application", "url": "https://database.shoug-tech.com/Phase-5/frontend/"}
+    {"@context": "https://schema.org", "@type": "WebPage", "description": "Academic documentation for the CS340 database web application project, covering planning, data modeling, implementation, and backend integration.", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "CS 340 - Database Web Application", "url": "https://database.shoug-tech.com/"}, "name": "Normalization | CS 340 - Database Web Application", "url": "https://database.shoug-tech.com/Phase-3/normalization/"}
   </script>
 
   </head>
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#phase-5-frontend-interface" class="md-skip">
+        <a href="#phase-3-normalization" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frontend Interface
+              Normalization
             
           </span>
         </div>
@@ -316,11 +316,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Phase-3/relational-schema/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../relational-schema/" class="md-tabs__link">
           
   
     
@@ -356,13 +358,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Phase-5/overview/" class="md-tabs__link">
           
   
     
@@ -926,8 +926,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -952,12 +954,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -971,7 +973,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Phase 3 - Logical Design
@@ -985,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/relational-schema/" class="md-nav__link">
+      <a href="../relational-schema/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1006,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/data-dictionary/" class="md-nav__link">
+      <a href="../data-dictionary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1027,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/mapping/" class="md-nav__link">
+      <a href="../mapping/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,10 +1047,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Phase-3/normalization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Normalization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1057,6 +1079,89 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-normalization-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Normalization Goal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-first-normal-form-1nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. First Normal Form (1NF)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-second-normal-form-2nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Second Normal Form (2NF)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-third-normal-form-3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Third Normal Form (3NF)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-relation-level-normalization-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Relation-Level Normalization Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-final-normalization-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Final Normalization Level
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalization-outcome" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normalization Outcome
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1069,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/constraints/" class="md-nav__link">
+      <a href="../constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1090,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/assumptions/" class="md-nav__link">
+      <a href="../assumptions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1111,7 +1216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Phase-3/report.pdf" class="md-nav__link">
+      <a href="../report.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1277,10 +1382,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1301,12 +1404,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
@@ -1320,7 +1423,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Phase 5 - Application
@@ -1334,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../Phase-5/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backend/" class="md-nav__link">
+      <a href="../../Phase-5/backend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1422,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basic-queries/" class="md-nav__link">
+      <a href="../../Phase-5/basic-queries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1443,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advanced-queries/" class="md-nav__link">
+      <a href="../../Phase-5/advanced-queries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1469,30 +1572,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Frontend Interface
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Phase-5/frontend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1501,167 +1584,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-frontend-goals" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Frontend Goals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-frontend-backend-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Frontend-Backend Integration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-primary-screens-and-data-flows" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Primary Screens and Data Flows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Primary Screens and Data Flows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-dashboard" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Dashboard
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-family-members" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Family Members
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-medical-records" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 Medical Records
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-risk-alerts" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4 Risk Alerts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-clinics-and-appointments" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.5 Clinics and Appointments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#36-awareness-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.6 Awareness Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#37-phase-5-demo-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.7 Phase 5 Demo Layer
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-validation-and-ux-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Validation and UX Rules
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-integration-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Integration Pattern
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-accessibility-and-responsiveness" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Accessibility and Responsiveness
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-deployment-testing-and-sustainability" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Deployment, Testing, and Sustainability
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#frontend-outcome" class="md-nav__link">
-    <span class="md-ellipsis">
-      Frontend Outcome
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1674,7 +1596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../report.pdf" class="md-nav__link">
+      <a href="../../Phase-5/report.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1866,141 +1788,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-frontend-goals" class="md-nav__link">
+  <a href="#1-normalization-goal" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Frontend Goals
+      1. Normalization Goal
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-frontend-backend-integration" class="md-nav__link">
+  <a href="#2-first-normal-form-1nf" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Frontend-Backend Integration
+      2. First Normal Form (1NF)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-primary-screens-and-data-flows" class="md-nav__link">
+  <a href="#3-second-normal-form-2nf" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Primary Screens and Data Flows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Primary Screens and Data Flows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-dashboard" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Dashboard
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-family-members" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Family Members
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-medical-records" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 Medical Records
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-risk-alerts" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4 Risk Alerts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-clinics-and-appointments" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.5 Clinics and Appointments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#36-awareness-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.6 Awareness Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#37-phase-5-demo-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.7 Phase 5 Demo Layer
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-validation-and-ux-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Validation and UX Rules
+      3. Second Normal Form (2NF)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-integration-pattern" class="md-nav__link">
+  <a href="#4-third-normal-form-3nf" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Integration Pattern
+      4. Third Normal Form (3NF)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-accessibility-and-responsiveness" class="md-nav__link">
+  <a href="#5-relation-level-normalization-summary" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Accessibility and Responsiveness
+      5. Relation-Level Normalization Summary
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-deployment-testing-and-sustainability" class="md-nav__link">
+  <a href="#6-final-normalization-level" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Deployment, Testing, and Sustainability
+      6. Final Normalization Level
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#frontend-outcome" class="md-nav__link">
+  <a href="#normalization-outcome" class="md-nav__link">
     <span class="md-ellipsis">
-      Frontend Outcome
+      Normalization Outcome
     </span>
   </a>
   
@@ -2023,115 +1867,111 @@
 
 <div class="home-hero">
 <div class="home-hero__text">
-<h1 id="phase-5-frontend-interface"><strong>Phase 5 — Frontend Interface</strong><a class="headerlink" href="#phase-5-frontend-interface" title="Permanent link">&para;</a></h1>
-<p>This section documents the user-facing interface and how each screen maps to the Supabase prototype features and the MySQL-backed CS340 demo layer.</p>
-<p><a class="md-button md-button--primary" href="../backend/">Backend Logic</a>
-<a class="md-button" href="../basic-queries/">SQL Queries</a>
-<a class="md-button" href="../overview/">System Overview</a></p>
+<h1 id="phase-3-normalization"><strong>Phase 3 — Normalization</strong><a class="headerlink" href="#phase-3-normalization" title="Permanent link">&para;</a></h1>
+<p>This section explains how the logical schema was normalized to reduce redundancy, avoid update anomalies, and keep the database consistent.</p>
+<p><a class="md-button md-button--primary" href="../relational-schema/">Relational Schema</a>
+<a class="md-button" href="../data-dictionary/">Data Dictionary</a>
+<a class="md-button" href="../constraints/">Constraints</a></p>
 </div>
 </div>
 <hr />
 <div class="phase-refresh">
-<h2 id="1-frontend-goals">1. Frontend Goals<a class="headerlink" href="#1-frontend-goals" title="Permanent link">&para;</a></h2>
-<p>The frontend is designed to be clear, fast, and task-oriented. It serves two audiences at once:</p>
+<h2 id="1-normalization-goal">1. Normalization Goal<a class="headerlink" href="#1-normalization-goal" title="Permanent link">&para;</a></h2>
+<p>The database was designed so that each relation stores one main subject and each non-key attribute depends on the correct primary key. This improves data quality because repeated facts, such as health condition names or clinic details, are stored in their own tables instead of being copied across multiple records.</p>
+<p>Normalization also supports the main purpose of the system: storing family medical history, health events, risk alerts, appointments, clinics, and awareness content in a structure that is easy to query and maintain.</p>
+<hr />
+<h2 id="2-first-normal-form-1nf">2. First Normal Form (1NF)<a class="headerlink" href="#2-first-normal-form-1nf" title="Permanent link">&para;</a></h2>
+<p>The schema satisfies First Normal Form because:</p>
 <ul>
-<li>End users of the healthcare prototype</li>
-<li>Instructors and evaluators reviewing the Phase 5 SQL demo</li>
+<li>Each table has a primary key that uniquely identifies each row.</li>
+<li>Each attribute stores a single value rather than a repeating group.</li>
+<li>Repeating data is separated into independent rows and related using foreign keys.</li>
 </ul>
-<p>Core goals:</p>
+<p>Examples:</p>
 <ul>
-<li>Simple CRUD flows for family and medical data</li>
-<li>Fast visibility into alerts and appointments</li>
-<li>Structured presentation of educational content</li>
-<li>Strong validation feedback before submission</li>
+<li>A <code>USER</code> can have many <code>FAMILY_MEMBER</code> records, so family members are stored in <code>FAMILY_MEMBER</code> instead of repeating family member fields inside <code>USER</code>.</li>
+<li>A family member can have many medical records, so medical history events are stored as separate rows in <code>MEDICAL_HISTORY</code>.</li>
+<li>Appointments are stored in <code>APPOINTMENT</code>, with one row per appointment instead of repeating appointment columns inside the user table.</li>
 </ul>
-<h2 id="2-frontend-backend-integration">2. Frontend-Backend Integration<a class="headerlink" href="#2-frontend-backend-integration" title="Permanent link">&para;</a></h2>
-<p>The frontend communicates with two backends:</p>
+<hr />
+<h2 id="3-second-normal-form-2nf">3. Second Normal Form (2NF)<a class="headerlink" href="#3-second-normal-form-2nf" title="Permanent link">&para;</a></h2>
+<p>The schema satisfies Second Normal Form because every relation uses a single-column primary key, and each non-key attribute depends on the whole primary key of its table.</p>
+<p>Examples:</p>
 <ul>
-<li>Supabase for prototype features such as authentication, appointments, and profile-driven workflows</li>
-<li>Express API for MySQL operations used in the CS340 Phase 5 demo</li>
+<li>In <code>APPOINTMENT</code>, attributes such as <code>appointment_date</code>, <code>appointment_time</code>, <code>reason</code>, and <code>status</code> describe one appointment identified by <code>appointment_id</code>.</li>
+<li>In <code>RISK_ALERT</code>, attributes such as <code>alert_type</code>, <code>risk_level</code>, <code>priority</code>, <code>status</code>, and dates describe one alert identified by <code>alert_id</code>.</li>
+<li>In <code>MEDICAL_HISTORY</code>, the event details depend on <code>event_id</code>, while <code>member_id</code> and <code>condition_id</code> connect the event to the related family member and health condition.</li>
 </ul>
-<p>Example API call:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">(</span><span class="s2">&quot;/api/users&quot;</span><span class="p">);</span>
-<span class="nx">setRows</span><span class="p">(</span><span class="nx">normalizeRows</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
-</code></pre></div>
-<p>This architecture keeps responsibilities separated while making the deployed experience feel like one system.</p>
-<h2 id="3-primary-screens-and-data-flows">3. Primary Screens and Data Flows<a class="headerlink" href="#3-primary-screens-and-data-flows" title="Permanent link">&para;</a></h2>
-<h3 id="31-dashboard">3.1 Dashboard<a class="headerlink" href="#31-dashboard" title="Permanent link">&para;</a></h3>
+<p>Because the design does not use composite primary keys, there are no partial dependencies.</p>
+<hr />
+<h2 id="4-third-normal-form-3nf">4. Third Normal Form (3NF)<a class="headerlink" href="#4-third-normal-form-3nf" title="Permanent link">&para;</a></h2>
+<p>The schema satisfies Third Normal Form because non-key attributes do not depend on other non-key attributes. Data that could create transitive dependencies is placed in separate relations.</p>
+<p>Examples:</p>
 <ul>
-<li>Shows quick summaries for family members, open alerts, and upcoming appointments</li>
-<li>Reads from <code>FamilyMember</code>, <code>RiskAlert</code>, and <code>Appointment</code></li>
+<li><code>HEALTH_CONDITION</code> stores condition details once using <code>condition_id</code>. Medical records reference <code>condition_id</code> instead of repeating the condition name, category, and description in each history record.</li>
+<li><code>CLINIC</code> stores clinic details once using <code>clinic_id</code>. Appointments reference <code>clinic_id</code> instead of repeating clinic name, city, address, and phone in every appointment.</li>
+<li><code>USER</code> stores user identity and contact information, while <code>FAMILY_MEMBER</code> stores dependent family member information linked through <code>user_id</code>.</li>
 </ul>
-<h3 id="32-family-members">3.2 Family Members<a class="headerlink" href="#32-family-members" title="Permanent link">&para;</a></h3>
+<p>This prevents common anomalies:</p>
 <ul>
-<li>Create, update, and delete family member records</li>
-<li>Uses <code>FamilyMember</code> with owner scoping by <code>user_id</code></li>
+<li>Update anomaly: changing a clinic phone number is done once in <code>CLINIC</code>.</li>
+<li>Insert anomaly: a new health condition can be added to <code>HEALTH_CONDITION</code> before it appears in a medical history record.</li>
+<li>Delete anomaly: deleting an appointment does not delete the clinic details.</li>
 </ul>
-<h3 id="33-medical-records">3.3 Medical Records<a class="headerlink" href="#33-medical-records" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Historical entries from <code>MedicalHistory</code></li>
-<li>Event log entries from <code>HealthEvent</code></li>
-<li>Uses joins to <code>HealthCondition</code> for readable condition names</li>
-</ul>
-<h3 id="34-risk-alerts">3.4 Risk Alerts<a class="headerlink" href="#34-risk-alerts" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Displays <code>RiskAlert</code> items by member and status</li>
-<li>Supports alert lifecycle updates from <code>New</code> to <code>Viewed</code> to <code>Resolved</code></li>
-</ul>
-<h3 id="35-clinics-and-appointments">3.5 Clinics and Appointments<a class="headerlink" href="#35-clinics-and-appointments" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Clinic browsing from <code>Clinic</code></li>
-<li>Booking and updates in <code>Appointment</code></li>
-<li>Form controls constrain status to schema ENUM values</li>
-</ul>
-<h3 id="36-awareness-hub">3.6 Awareness Hub<a class="headerlink" href="#36-awareness-hub" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Content feed from <code>AwarenessContent</code></li>
-<li>Supports sorting by recency, topic, and type</li>
-</ul>
-<h3 id="37-phase-5-demo-layer">3.7 Phase 5 Demo Layer<a class="headerlink" href="#37-phase-5-demo-layer" title="Permanent link">&para;</a></h3>
-<p>The frontend also exposes a dedicated demo interface for:</p>
-<ul>
-<li>User CRUD in MySQL</li>
-<li>Family member CRUD in MySQL</li>
-<li>Running predefined SQL queries <code>q01</code> to <code>q40</code></li>
-</ul>
-<p>This lets the academic database requirements be demonstrated directly inside the application UI.</p>
-<h2 id="4-validation-and-ux-rules">4. Validation and UX Rules<a class="headerlink" href="#4-validation-and-ux-rules" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Required fields are blocked until complete</li>
-<li>Date, time, and email format checks run on the client side</li>
-<li>ENUM-constrained values are rendered as dropdowns or selectors</li>
-<li>Friendly inline error messages are tied to each field</li>
-<li>Destructive actions use confirmation prompts</li>
-</ul>
-<h2 id="5-integration-pattern">5. Integration Pattern<a class="headerlink" href="#5-integration-pattern" title="Permanent link">&para;</a></h2>
-<p>UI interaction flow:</p>
-<ol>
-<li>User action in a screen component</li>
-<li>Frontend sends an API request to the backend endpoint</li>
-<li>Backend validates input and executes SQL</li>
-<li>Database constraints enforce integrity</li>
-<li>Response updates UI state</li>
-</ol>
-<h2 id="6-accessibility-and-responsiveness">6. Accessibility and Responsiveness<a class="headerlink" href="#6-accessibility-and-responsiveness" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Works across desktop and mobile layouts</li>
-<li>Keyboard focus remains visible on controls</li>
-<li>High-contrast text and clear navigation labels improve usability</li>
-</ul>
-<h2 id="7-deployment-testing-and-sustainability">7. Deployment, Testing, and Sustainability<a class="headerlink" href="#7-deployment-testing-and-sustainability" title="Permanent link">&para;</a></h2>
-<p>The deployed system combines a React frontend, Supabase services, and a MySQL API server into one experience.</p>
-<p>Testing included:</p>
-<ul>
-<li>CRUD functionality validation</li>
-<li>Authentication testing</li>
-<li>API endpoint testing</li>
-<li>Query correctness verification</li>
-</ul>
-<p>The frontend also benefits from modular design and a scalable separation of concerns, which supports long-term sustainability as the prototype and academic demo evolve independently.</p>
-<h2 id="frontend-outcome">Frontend Outcome<a class="headerlink" href="#frontend-outcome" title="Permanent link">&para;</a></h2>
-<p>The interface is aligned with backend endpoints, schema constraints, and course requirements, ensuring that user actions map cleanly to valid database operations across both system layers.</p>
+<hr />
+<h2 id="5-relation-level-normalization-summary">5. Relation-Level Normalization Summary<a class="headerlink" href="#5-relation-level-normalization-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Relation</th>
+<th>Normalization Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>USER</code></td>
+<td>User identity and account details depend only on <code>user_id</code>; <code>email</code> is unique to avoid duplicate accounts.</td>
+</tr>
+<tr>
+<td><code>CLINIC</code></td>
+<td>Clinic attributes depend only on <code>clinic_id</code>; appointment data is kept in a separate relation.</td>
+</tr>
+<tr>
+<td><code>HEALTH_CONDITION</code></td>
+<td>Condition name, category, and description are stored once and referenced by medical/event records.</td>
+</tr>
+<tr>
+<td><code>AWARENESS_CONTENT</code></td>
+<td>Content records are independent, and each content attribute depends only on <code>content_id</code>.</td>
+</tr>
+<tr>
+<td><code>FAMILY_MEMBER</code></td>
+<td>Family member details depend on <code>member_id</code>; ownership is represented by <code>user_id</code> as a foreign key.</td>
+</tr>
+<tr>
+<td><code>MEDICAL_HISTORY</code></td>
+<td>Event details depend on <code>event_id</code>; member and condition relationships are handled through foreign keys.</td>
+</tr>
+<tr>
+<td><code>HEALTH_EVENT</code></td>
+<td>General event details depend on <code>event_id</code>; optional links to members and conditions support flexible event logging.</td>
+</tr>
+<tr>
+<td><code>RISK_ALERT</code></td>
+<td>Alert details depend on <code>alert_id</code>; the alert is connected to the affected family member through <code>member_id</code>.</td>
+</tr>
+<tr>
+<td><code>APPOINTMENT</code></td>
+<td>Appointment details depend on <code>appointment_id</code>; user and clinic details are referenced instead of repeated.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-final-normalization-level">6. Final Normalization Level<a class="headerlink" href="#6-final-normalization-level" title="Permanent link">&para;</a></h2>
+<p>The final logical schema is in Third Normal Form (3NF). It also follows the main idea of BCNF for the current design because each relation is organized around a candidate key, and the meaningful dependencies are based on primary keys or declared unique attributes such as <code>USER.email</code> and <code>HEALTH_CONDITION.condition_name</code>.</p>
+<p>The only intentionally flexible fields are descriptive text fields such as symptoms, notes, treatment, outcome, and content body. These fields are kept as text because they represent narrative user-entered information rather than structured repeating entities.</p>
+<h2 id="normalization-outcome">Normalization Outcome<a class="headerlink" href="#normalization-outcome" title="Permanent link">&para;</a></h2>
+<p>The normalized schema reduces duplicated data, protects data consistency, and supports the Phase 4 MySQL implementation through clear primary keys, foreign keys, unique constraints, and controlled domains.</p>
 </div>
 
 

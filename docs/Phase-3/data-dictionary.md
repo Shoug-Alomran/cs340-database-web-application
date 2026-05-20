@@ -6,6 +6,7 @@
 This section defines attributes, data types, and constraints for the logical schema.
 
 [Relational Schema](../relational-schema/){ .md-button .md-button--primary }
+[Normalization](../normalization/){ .md-button }
 [Constraints Summary](../constraints/){ .md-button }
 
 </div>

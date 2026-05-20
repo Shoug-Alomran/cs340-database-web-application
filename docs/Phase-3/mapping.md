@@ -7,6 +7,7 @@ This section explains how the conceptual EER model from Phase 2 was transformed 
 
 [EER Diagram](../../Phase-2/eer-diagram/){ .md-button .md-button--primary }
 [Data Dictionary](../data-dictionary/){ .md-button }
+[Normalization](../normalization/){ .md-button }
 
 </div>
 </div>
@@ -76,7 +77,13 @@ Relational constraints preserve conceptual rules:
 
 ---
 
-## 5. Implementation Readiness
+## 5. Normalization Readiness
+
+The mapping separates independent subjects into their own relations. For example, clinic details are stored in `CLINIC`, health condition details are stored in `HEALTH_CONDITION`, and dependent records reference them through foreign keys. This supports 1NF, 2NF, and 3NF by avoiding repeating groups, partial dependencies, and transitive dependencies.
+
+---
+
+## 6. Implementation Readiness
 
 The resulting relational schema is normalized, dependency-safe, and ready for MySQL DDL implementation in Phase 4.
 
