@@ -74,7 +74,7 @@ A full-stack, database-driven web application designed and implemented using str
 
 ## Team
 
-<div class="grid cards" markdown>
+<div class="grid cards team-grid" markdown>
 
 -   :material-account-circle: **Shoug Alomran**
 

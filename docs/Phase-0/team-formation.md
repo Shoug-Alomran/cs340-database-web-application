@@ -18,7 +18,7 @@ This section defines the project team structure, communication workflow, and mod
 
 ## Team Members
 
-<div class="grid cards" markdown>
+<div class="grid cards team-grid" markdown>
 
 -   :material-account-circle: **Shoug Alomran**
 
