@@ -20,6 +20,37 @@
     return titleEl ? titleEl.textContent.trim() : "Website";
   }
 
+  function getPath() {
+    const base = getBase();
+    let path = window.location.pathname;
+    if (base && path.startsWith(base)) path = path.slice(base.length);
+    if (!path.startsWith("/")) path = "/" + path;
+    return path;
+  }
+
+  function isHomePage() {
+    const path = getPath();
+    return path === "/" || path === "/index.html";
+  }
+
+  function isReportPage() {
+    const path = getPath();
+    return /\/report\/?$/.test(path) || /\/report\.html$/.test(path);
+  }
+
+  function applySidebarDefaults() {
+    const navCollapsed = isHomePage();
+    const tocCollapsed = isReportPage();
+
+    document.body.classList.toggle("sidebar-nav-collapsed", navCollapsed);
+    document.body.classList.toggle("sidebar-toc-collapsed", tocCollapsed);
+
+    const navToggle = document.querySelector('.header-toggle[data-toggle="nav"]');
+    const tocToggle = document.querySelector('.header-toggle[data-toggle="toc"]');
+    if (navToggle) navToggle.setAttribute("aria-pressed", String(!navCollapsed));
+    if (tocToggle) tocToggle.setAttribute("aria-pressed", String(!tocCollapsed));
+  }
+
   function addHeaderCTA() {
     const headerInner = document.querySelector(".md-header__inner");
     if (!headerInner) return;
@@ -32,11 +63,8 @@
     navToggle.className = "header-toggle";
     navToggle.type = "button";
     navToggle.textContent = "Nav";
+    navToggle.dataset.toggle = "nav";
     navToggle.setAttribute("aria-label", "Toggle navigation sidebar");
-    navToggle.setAttribute(
-      "aria-pressed",
-      String(!document.body.classList.contains("sidebar-nav-collapsed"))
-    );
     navToggle.addEventListener("click", () => {
       const collapsed = document.body.classList.toggle("sidebar-nav-collapsed");
       navToggle.setAttribute("aria-pressed", String(!collapsed));
@@ -46,11 +74,8 @@
     tocToggle.className = "header-toggle";
     tocToggle.type = "button";
     tocToggle.textContent = "TOC";
+    tocToggle.dataset.toggle = "toc";
     tocToggle.setAttribute("aria-label", "Toggle table of contents sidebar");
-    tocToggle.setAttribute(
-      "aria-pressed",
-      String(!document.body.classList.contains("sidebar-toc-collapsed"))
-    );
     tocToggle.addEventListener("click", () => {
       const collapsed = document.body.classList.toggle("sidebar-toc-collapsed");
       tocToggle.setAttribute("aria-pressed", String(!collapsed));
@@ -191,8 +216,8 @@
   }
 
   function run() {
-    document.body.classList.remove("sidebar-nav-collapsed", "sidebar-toc-collapsed");
     addHeaderCTA();
+    applySidebarDefaults();
     addFooterBlock();
     updateFooterAttribution();
     styleFooterMetaToMatch();

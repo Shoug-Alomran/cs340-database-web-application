@@ -44,53 +44,53 @@ nav:
   - Home: index.md
 
   - Project Overview:
-      - Introduction: Project-Overview/introduction.md
+      - Introduction: project-overview/introduction.md
 
   - Phase 0 - Proposal:
-      - Team Formation: Phase-0/team-formation.md
-      - Project Idea: Phase-0/project-idea.md
+      - Team Formation: phase-0/team-formation.md
+      - Project Idea: phase-0/project-idea.md
 
   - Phase 1 - Planning:
-      - Application Concept: Phase-1/application-concept.md
-      - Requirements: Phase-1/requirements.md
-      - System Architecture: Phase-1/architecture.md
-      - UI Wireframes: Phase-1/ui-wireframes.md
-      - Report: Phase-1/report.pdf
+      - Application Concept: phase-1/application-concept.md
+      - Requirements: phase-1/requirements.md
+      - System Architecture: phase-1/architecture.md
+      - UI Wireframes: phase-1/ui-wireframes.md
+      - Report: phase-1/report.md
 
   - Phase 2 - Conceptual Design:
-      - EER Diagram: Phase-2/eer-diagram.md
-      - Design Explanation: Phase-2/design-explanation.md
-      - Report: Phase-2/report.pdf
+      - EER Diagram: phase-2/eer-diagram.md
+      - Design Explanation: phase-2/design-explanation.md
+      - Report: phase-2/report.md
 
   - Phase 3 - Logical Design:
-      - Relational Schema: Phase-3/relational-schema.md
-      - Data Dictionary: Phase-3/data-dictionary.md
-      - Mapping Explanation: Phase-3/mapping.md
-      - Normalization: Phase-3/normalization.md
-      - Constraints: Phase-3/constraints.md
-      - Assumptions: Phase-3/assumptions.md
-      - Report: Phase-3/report.pdf
+      - Relational Schema: phase-3/relational-schema.md
+      - Data Dictionary: phase-3/data-dictionary.md
+      - Mapping Explanation: phase-3/mapping.md
+      - Normalization: phase-3/normalization.md
+      - Constraints: phase-3/constraints.md
+      - Assumptions: phase-3/assumptions.md
+      - Report: phase-3/report.md
 
   - Phase 4 - Database Implementation:
-      - SQL DDL Scripts: Phase-4/sql-ddl.md
-      - Sample Data: Phase-4/sample-data.md
-      - Constraints & Integrity: Phase-4/constraints.md
-      - Report: Phase-4/report.pdf
+      - SQL DDL Scripts: phase-4/sql-ddl.md
+      - Sample Data: phase-4/sample-data.md
+      - Constraints & Integrity: phase-4/constraints.md
+      - Report: phase-4/report.md
 
   - Phase 5 - Application:
-      - System Overview: Phase-5/overview.md
-      - Backend Logic: Phase-5/backend.md
+      - System Overview: phase-5/overview.md
+      - Backend Logic: phase-5/backend.md
       - SQL Queries:
-          - Basic Queries: Phase-5/basic-queries.md
-          - Advanced Queries: Phase-5/advanced-queries.md
-      - Frontend Interface: Phase-5/frontend.md
-      - Report: Phase-5/report.pdf
+          - Basic Queries: phase-5/basic-queries.md
+          - Advanced Queries: phase-5/advanced-queries.md
+      - Frontend Interface: phase-5/frontend.md
+      - Report: phase-5/report.md
 
   - Sustainability:
-      - Reflection: Sustainability/reflection.md
+      - Reflection: sustainability/reflection.md
 
   - Appendix:
-      - References: Appendix/references.md
+      - References: appendix/references.md
 
 markdown_extensions:
   - admonition

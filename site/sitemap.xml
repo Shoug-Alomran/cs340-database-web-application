@@ -2,132 +2,157 @@
 <ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
     <ns0:url>
          <ns0:loc>https://database.shoug-tech.com/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Appendix/references/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/appendix/references/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-0/project-idea/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-0/project-idea/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-0/team-formation/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-0/team-formation/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-1/application-concept/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-1/application-concept/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-1/architecture/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-1/architecture/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-1/requirements/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-1/report/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-1/ui-wireframes/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-1/requirements/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-2/design-explanation/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-1/ui-wireframes/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-2/eer-diagram/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-2/design-explanation/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/assumptions/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-2/eer-diagram/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/constraints/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-2/report/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/data-dictionary/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/assumptions/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/mapping/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/constraints/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/normalization/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/data-dictionary/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-3/relational-schema/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/mapping/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-4/constraints/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/normalization/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-4/sample-data/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/relational-schema/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-4/sql-ddl/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-3/report/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-5/advanced-queries/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-4/constraints/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-5/backend/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-4/report/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-5/basic-queries/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-4/sample-data/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-5/frontend/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-4/sql-ddl/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Phase-5/overview/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/advanced-queries/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Project-Overview/introduction/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/backend/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
     <ns0:url>
-         <ns0:loc>https://database.shoug-tech.com/Sustainability/reflection/</ns0:loc>
-         <ns0:lastmod>2026-05-20</ns0:lastmod>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/basic-queries/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
+         <ns0:changefreq>daily</ns0:changefreq>
+    </ns0:url>
+    <ns0:url>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/frontend/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
+         <ns0:changefreq>daily</ns0:changefreq>
+    </ns0:url>
+    <ns0:url>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/overview/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
+         <ns0:changefreq>daily</ns0:changefreq>
+    </ns0:url>
+    <ns0:url>
+         <ns0:loc>https://database.shoug-tech.com/phase-5/report/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
+         <ns0:changefreq>daily</ns0:changefreq>
+    </ns0:url>
+    <ns0:url>
+         <ns0:loc>https://database.shoug-tech.com/project-overview/introduction/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
+         <ns0:changefreq>daily</ns0:changefreq>
+    </ns0:url>
+    <ns0:url>
+         <ns0:loc>https://database.shoug-tech.com/sustainability/reflection/</ns0:loc>
+         <ns0:lastmod>2026-07-27</ns0:lastmod>
          <ns0:changefreq>daily</ns0:changefreq>
     </ns0:url>
 </ns0:urlset>

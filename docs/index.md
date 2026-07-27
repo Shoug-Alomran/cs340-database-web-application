@@ -7,8 +7,8 @@ Official documentation for our CS340 course project.
 
 A full-stack, database-driven web application designed and implemented using structured relational modeling, SQL, and backend integration.
 
-[Project Introduction](Project-Overview/introduction/){ .md-button .md-button--primary }
-[Phase 1 — Planning](Phase-1/application-concept/){ .md-button }
+[Project Introduction](project-overview/introduction/){ .md-button .md-button--primary }
+[Phase 1 — Planning](phase-1/application-concept/){ .md-button }
 
 </div>
 </div>
@@ -24,42 +24,42 @@ A full-stack, database-driven web application designed and implemented using str
     ---
     Overview, system purpose, scope, and foundational context.
 
-    [Open](Project-Overview/introduction/)
+    [Open](project-overview/introduction/)
 
 -   :material-numeric-1-circle: **Phase 1 — Planning**
 
     ---
     Application concept, requirements, architecture, and UI design.
 
-    [Open](Phase-1/application-concept/)
+    [Open](phase-1/application-concept/)
 
 -   :material-numeric-2-circle: **Phase 2 — Conceptual Design**
 
     ---
     EER diagram and conceptual modeling.
 
-    [Open](Phase-2/eer-diagram/)
+    [Open](phase-2/eer-diagram/)
 
 -   :material-numeric-3-circle: **Phase 3 — Logical Design**
 
     ---
     Relational schema, mapping, normalization, and constraints.
 
-    [Open](Phase-3/relational-schema/)
+    [Open](phase-3/relational-schema/)
 
 -   :material-numeric-4-circle: **Phase 4 — Database Implementation**
 
     ---
     SQL DDL scripts, sample data, and integrity enforcement.
 
-    [Open](Phase-4/sql-ddl/)
+    [Open](phase-4/sql-ddl/)
 
 -   :material-numeric-5-circle: **Phase 5 — Application Layer**
 
     ---
     Backend logic, SQL queries, and frontend integration.
 
-    [Open](Phase-5/backend/)
+    [Open](phase-5/backend/)
 
 </div>
 

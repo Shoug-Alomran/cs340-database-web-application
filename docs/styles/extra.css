@@ -1504,3 +1504,94 @@ body.member-modal-lock {
     transform: none !important;
   }
 }
+
+/* =======================================================
+   PDF REPORT EMBED
+   ======================================================= */
+.pdf-embed {
+  margin: 1rem 0 1.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 122, 77, 0.22);
+  box-shadow: 0 12px 30px rgba(15, 81, 50, 0.10);
+}
+
+[data-md-color-scheme="slate"] .pdf-embed {
+  border-color: var(--hf-border);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+}
+
+.pdf-embed__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, var(--mint-1), var(--mint-2));
+}
+
+[data-md-color-scheme="slate"] .pdf-embed__toolbar {
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.pdf-embed__title {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+[data-md-color-scheme="slate"] .pdf-embed__title {
+  color: #e6f4f1;
+}
+
+.pdf-embed__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pdf-embed__actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid rgba(15, 118, 110, 0.28);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--accent);
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+[data-md-color-scheme="slate"] .pdf-embed__actions a {
+  border-color: var(--hf-border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--mint-1);
+}
+
+.pdf-embed__actions a:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.pdf-embed__frame {
+  display: block;
+  width: 100%;
+  height: 82vh;
+  min-height: 480px;
+  border: 0;
+  background: #f3f4f6;
+}
+
+[data-md-color-scheme="slate"] .pdf-embed__frame {
+  background: #0b1220;
+}
+
+.pdf-embed__fallback {
+  padding: 14px;
+  font-size: 0.9rem;
+}

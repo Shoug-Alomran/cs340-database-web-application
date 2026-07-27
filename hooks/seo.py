@@ -6,7 +6,7 @@ from xml.etree import ElementTree as ET
 NOINDEX_PAGE_URLS = {
     "academic-disclaimer/",
     "privacy-notice/",
-    "Copyright/",
+    "copyright/",
 }
 
 

@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /*?q=*
+Disallow: /*?query=*
+Disallow: /*?h=*
+Disallow: /*.md$
+Disallow: /*%20*
 
 Sitemap: https://database.shoug-tech.com/sitemap.xml
